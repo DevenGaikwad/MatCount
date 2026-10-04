@@ -53,6 +53,10 @@ def main() -> int:
     if not re.fullmatch(r"[a-f0-9]{40}", args.commit):
         raise ValueError("Require an exact immutable commit SHA")
     entries = source_entries(args.commit, args.tree)
+    if not args.tree:
+        # Checkout filters intentionally make PowerShell files CRLF. Export raw
+        # Git blobs so archive bytes still match the selected immutable tree.
+        subprocess.check_call(["git", "diff", "--quiet", args.commit, "--"], cwd=ROOT)
     if "SOURCE_COMMIT.txt" in entries:
         raise ValueError("Distribution metadata must not replace a committed source file")
     payload = {}
@@ -61,7 +65,9 @@ def main() -> int:
         path = ROOT / name
         if path.is_symlink():
             raise ValueError("Symlinks are excluded")
-        content = path.read_bytes()
+        content = path.read_bytes() if args.tree else subprocess.check_output(
+            ["git", "cat-file", "blob", expected], cwd=ROOT
+        )
         actual = hashlib.sha1(b"blob " + str(len(content)).encode() + b"\0" + content).hexdigest()
         if actual != expected:
             raise ValueError(f"Source differs from selected commit: {name}")
