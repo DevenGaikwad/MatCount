@@ -1,0 +1,72 @@
+"""Frozen SEMS status and role constants."""
+
+from enum import StrEnum
+
+
+class Role(StrEnum):
+    STUDENT = "STUDENT"
+    FACULTY = "FACULTY"
+    LAB_ASSISTANT = "LAB_ASSISTANT"
+    ADMINISTRATOR = "ADMINISTRATOR"
+
+
+class AccountStatus(StrEnum):
+    ACTIVE = "ACTIVE"
+    INACTIVE = "INACTIVE"
+    SUSPENDED = "SUSPENDED"
+
+
+class InventoryStatus(StrEnum):
+    AVAILABLE = "AVAILABLE"
+    LOW_STOCK = "LOW_STOCK"
+    OUT_OF_STOCK = "OUT_OF_STOCK"
+    BLOCKED = "BLOCKED"
+    INACTIVE = "INACTIVE"
+
+
+class RequestPriority(StrEnum):
+    LOW = "LOW"
+    MEDIUM = "MEDIUM"
+    HIGH = "HIGH"
+    URGENT = "URGENT"
+
+
+class RequestStatus(StrEnum):
+    DRAFT = "DRAFT"
+    SUBMITTED = "SUBMITTED"
+    PARTIALLY_APPROVED = "PARTIALLY_APPROVED"
+    APPROVED = "APPROVED"
+    FULFILLED = "FULFILLED"
+    REJECTED = "REJECTED"
+    CANCELLED = "CANCELLED"
+
+
+class RequestItemStatus(StrEnum):
+    PENDING = "PENDING"
+    PARTIALLY_APPROVED = "PARTIALLY_APPROVED"
+    APPROVED = "APPROVED"
+    REJECTED = "REJECTED"
+    ALLOCATED = "ALLOCATED"
+    FULFILLED = "FULFILLED"
+
+
+class TransferStatus(StrEnum):
+    DRAFT = "DRAFT"
+    APPROVED = "APPROVED"
+    DISPATCHED = "DISPATCHED"
+    RECEIVED = "RECEIVED"
+    PARTIALLY_RETURNED = "PARTIALLY_RETURNED"
+    RETURNED = "RETURNED"
+    CANCELLED = "CANCELLED"
+
+
+class ApprovalStatus(StrEnum):
+    PENDING = "PENDING"
+    APPROVED = "APPROVED"
+    REJECTED = "REJECTED"
+
+
+DATABASE_NAME = "sems_db"
+DEFAULT_DB_PORT = 3306
+FROZEN_RELATION_COUNT = 13
+

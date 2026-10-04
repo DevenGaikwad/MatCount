@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Private security reporting instructions
+    url: https://github.com/DevenGaikwad/MatCount/blob/main/SECURITY.md
+    about: Do not post vulnerabilities, secrets or real student data in public issues.

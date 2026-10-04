@@ -1,0 +1,54 @@
+# ETCS302 Syllabus Traceability Matrix — SEMS
+
+**Baseline:** frozen 13-relation `sems_db` plus isolated `academic_demo` teaching evidence  
+**Status vocabulary:** IMPLEMENTED, DEMONSTRATED, DOCUMENTED, NOT APPLICABLE, VENDOR-SPECIFIC EQUIVALENT, OPTIONAL ACADEMIC EXTENSION
+
+| Syllabus Unit / Assignment | Concept | SEMS implementation | Database object / file | Frontend demonstration | Workbench demonstration | Automated test | Documentation | Status |
+|---|---|---|---|---|---|---|---|---|
+| Unit I | DBMS purpose and file-system advantages | centralized constrained multi-user component/asset facts | `sems_db` | login, shared availability and workflows | inspect common schema/data | architecture boundary tests | `DBMS_ARCHITECTURE_AND_DATA_MODELS.md` | DOCUMENTED |
+| Unit I | three-schema architecture, abstraction, data independence | role views/UI → frozen logical schema → InnoDB/indexes | frontend, API, 13 relations, indexes | compare Student/Admin external views | inspect tables/index plans | `tests/test_architecture.py` | architecture/model study | IMPLEMENTED |
+| Unit I | storage manager and query processor | MySQL/InnoDB storage; optimizer/SQL execution | `sql/`, EXPLAIN demo | reports consume optimized queries | EXPLAIN tree | SQL static contract | query optimization report | DEMONSTRATED |
+| Unit I | hierarchical/network/relational/object-oriented models | relational selected; alternatives compared, not forced | none added | viva explanation | n/a | n/a | architecture/model study | DOCUMENTED |
+| Unit I / A1 | requirements, conceptual ER/EER, entities/attributes/relationships | authoritative conceptual model mapped without redesign | freeze register, mapping docs | explain modules from entity groups | reverse-engineer only for verification | schema/model contracts | `ER_TO_RELATIONAL_MAPPING.md` | IMPLEMENTED |
+| Unit II | relations, tuples, attributes and domains | typed 13-relation schema with ENUM/date/numeric domains | `sql/01_schema.sql` | table/report rows | DESCRIBE / SHOW CREATE TABLE | schema/model/constraint tests | `schema_dictionary.md` | IMPLEMENTED |
+| Unit II | candidate/primary/foreign keys and referential integrity | PK, alternate UNIQUE and FK actions | all 13 relations | detail pages follow stable IDs | INFORMATION_SCHEMA key queries | MySQL integration + static contract | schema/cardinality docs | IMPLEMENTED |
+| Unit II | selection, projection and rename | WHERE, selected columns and aliases | `01_relational_algebra_examples.sql` | filters/search | execute read-only examples | static academic token contract | academic demo README | DEMONSTRATED |
+| Unit II | union, intersection, difference, Cartesian product | `UNION`, MySQL 8.4 `INTERSECT`, `EXCEPT`, bounded `CROSS JOIN` | `01_relational_algebra_examples.sql` | not forced into UI | execute bounded examples | static academic token contract | academic demo README | DEMONSTRATED |
+| Unit II | joins | equi/theta-style join expressions and multi-role LAB joins | views, verification, `03_joins_aggregates.sql` | inventory/request/transfer pages | run JOIN examples | view/schema tests | feature traceability | IMPLEMENTED |
+| Unit II | FD, MVD, 1NF/2NF/3NF/BCNF | per-relation proof; controlled exceptions disclosed | frozen schema | viva only | inspect keys | model contract | `NORMALIZATION_PROOF.md` | DOCUMENTED |
+| Unit III / A2 | DDL and data types | CREATE database/table/index/view/routine/trigger; safe ALTER/DROP in demo only | production `sql/`; `00_ddl_vendor_equivalents.sql` | n/a | execute in documented order | SQL contract | Workbench guide | IMPLEMENTED |
+| Unit III / A3 | INSERT, UPDATE, DELETE, SELECT and basic predicates | seed/production writes plus temporary-table teaching demo | `06_seed_data.sql`, `02_dml_and_advanced_selects.sql` | CRUD/workflow forms | execute temporary demo | service/validation/static tests | academic coverage report | IMPLEMENTED |
+| Unit III / A3 | equality, BETWEEN, IN, LIKE, IS NULL, DISTINCT, ORDER BY, LIMIT | bounded demo queries | `02_dml_and_advanced_selects.sql` | search/filter/paging | run script | static token contract | academic demo README | DEMONSTRATED |
+| Unit III / A4 | aggregates, GROUP BY and HAVING | stock/request/disposal reports | views, `03_joins_aggregates.sql` | dashboard/charts/reports | aggregate demo | analytics/view tests | feature traceability | IMPLEMENTED |
+| Unit III / A4 | INNER/LEFT/RIGHT joins | legitimate inventory/catalogue/lab examples | `03_joins_aggregates.sql` | joined module tables | execute examples | static token contract | academic demo README | DEMONSTRATED |
+| Unit III | self-join | no defensible adjacency/hierarchy relation; LAB joined twice by two transfer roles is explained but not mislabeled | none | transfer source/destination | show two-role join | n/a | coverage report | NOT APPLICABLE |
+| Unit III | scalar/string/date/numeric functions, CASE, COALESCE, NULL handling | status labels, date calculations, rounded ratios and defaults | views and `03_joins_aggregates.sql` | formatted dashboard/report values | run script | SQL/view tests | academic coverage report | DEMONSTRATED |
+| Unit III / A6 | subqueries, correlated queries, IN, EXISTS, NOT EXISTS, derived tables | real inventory/request examples | `04_nested_correlated_queries.sql` | results interpreted in viva | run script | static token contract | academic demo README | DEMONSTRATED |
+| Unit III | CTE and window function | lab-wise stock rank with CTE + `DENSE_RANK` | `04_nested_correlated_queries.sql` | optional report explanation | run bounded query | static token contract | academic coverage report | DEMONSTRATED |
+| Unit III / A5 | views | seven frozen reporting views with declared grains | `sql/03_views.sql` | Reports module | SHOW CREATE VIEW / SELECT | exact seven-view contract + integration | schema dictionary | IMPLEMENTED |
+| Unit III / A7 | procedure and function | production availability procedure/value function; isolated IN/OUT and remaining-quantity demos | `sql/04_routines.sql`, `06_stored_routines.sql` | reports/availability service equivalent | CALL/SELECT routines | routine integration + static tokens | coverage report | IMPLEMENTED |
+| Unit III / A8 | triggers | two production validation triggers; isolated validation/sync/audit demo | `sql/05_triggers.sql`, `08_trigger_audit_demo.sql` | constraint error shown safely | inspect/run demo schema | trigger integration + static contract | coverage report | IMPLEMENTED |
+| Unit III / A9 | cursor | isolated lab stock cursor with handler/loop and set-based comparison | `07_cursor_demo.sql` | no production cursor UI | CALL demo procedure | static cursor token contract | academic demo README | DEMONSTRATED |
+| Unit III | assertions | MySQL has no `CREATE ASSERTION`; CHECK/FK/UNIQUE/triggers/services used | schema/service rules | validation feedback | SHOW CREATE TABLE | constraint/rule tests | coverage report | VENDOR-SPECIFIC EQUIVALENT |
+| Unit III | sequences | MySQL `AUTO_INCREMENT` identity columns | schema and DDL demo | generated IDs visible | SHOW CREATE TABLE | schema contract | coverage report | VENDOR-SPECIFIC EQUIVALENT |
+| Unit III | synonyms | no MySQL `CREATE SYNONYM`; a demo view illustrates named abstraction without claiming equivalence | `00_ddl_vendor_equivalents.sql` | n/a | create/select/drop demo view | static token contract | coverage report | VENDOR-SPECIFIC EQUIVALENT |
+| Unit III | DCL, users, roles, GRANT/REVOKE/SHOW GRANTS | administrator-only placeholder DCL demo; application RBAC kept separate | `12_dcl_roles_privileges.sql` | role-specific pages | run only with authorized account after replacing placeholders | static token contract | RBAC matrix + Workbench guide | DEMONSTRATED |
+| Unit III / IV | TCL and ACID | real service transactions; isolated COMMIT/ROLLBACK/SAVEPOINT | services, `09_transactions_savepoints.sql` | complete stock workflows | run demo schema transaction | transaction/rule tests | transaction report | IMPLEMENTED |
+| Unit IV | schedules, serializability and recoverability | locking design implemented; schedule theory documented | service transaction design | two-user explanation | two-tab demo | transaction/workflow tests | transaction report | DOCUMENTED |
+| Unit IV | row locking and lost-update prevention | ordered `SELECT ... FOR UPDATE` stock locks | inventory repository + transfer/disposal services | concurrent role workflow | `10_concurrency_demo.sql` | transaction architecture/integration tests | transaction report | IMPLEMENTED |
+| Unit IV | isolation phenomena and levels | READ COMMITTED configuration and correctness boundaries | `db/connection.py` | n/a | inspect session isolation | settings/transaction tests | transaction report | IMPLEMENTED |
+| Unit IV | deadlock detection/handling | stable lock order; safe two-session demo and full rollback/retry explanation | `11_deadlock_demo.sql` | n/a | isolated demo rows | static contract | transaction report | DEMONSTRATED |
+| Unit IV | logs, undo/redo, checkpoints and crash recovery | InnoDB concepts documented; no destructive crash simulation | MySQL engine | n/a | demonstrate ROLLBACK only | n/a | transaction report | DOCUMENTED |
+| Unit V | key-value/document/column/graph comparison and CAP | theory with SEMS fit analysis | `academic_demo/nosql/README.md` | optional viva | n/a | file/static contract | NoSQL README | OPTIONAL ACADEMIC EXTENSION |
+| Unit V | basic MongoDB CRUD and projection | sanitized component documents; insert/find/update/delete | `mongodb_demo.js`, sample JSON | not a runtime dependency | optional Mongo shell | static demo token contract | NoSQL README | OPTIONAL ACADEMIC EXTENSION |
+| A10 | normalized mini-project minimums | 13 tables, multiple roles, CRUD, joins, subqueries, reports and application integration | complete repository | complete Next.js UI | full Workbench sequence | backend/API/frontend/integration suites | full docs set | IMPLEMENTED |
+| A10 | security and ethics | external hashes, opaque sessions, active-user checks, least privilege, parameterization, minimized responses | auth/API/services | role-specific UI | DCL/show grants | RBAC/data-policy/secret tests | RBAC matrix | IMPLEMENTED |
+| A10 | query optimization | justified indexes and plan protocol | `sql/02_indexes.sql`, EXPLAIN demo | bounded pages | compare plans | SQL contract | `QUERY_OPTIMIZATION_REPORT.md` | DEMONSTRATED |
+
+## Integrity of status claims
+
+- “IMPLEMENTED” means a production source object/path exists; fresh local MySQL execution may still be pending.
+- “DEMONSTRATED” means an executable, safety-labelled teaching artifact exists; it does not mean it was executed in this environment.
+- optional NoSQL material never participates in the SEMS runtime.
+- vendor-specific equivalents are documented precisely; unsupported MySQL syntax is not fabricated.
+
