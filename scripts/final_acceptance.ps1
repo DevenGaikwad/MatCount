@@ -83,7 +83,7 @@ function Test-ProjectStructure {
         "scripts/validate_project.py", "scripts/check_live_database.py",
         "scripts/test_database_safety.py", "scripts/scan_secrets.py"
     )
-    $missing = @($required | Where-Object { -not (Test-Path (Join-Path $ProjectRoot $_) -PathType Leaf })
+    $missing = @($required | Where-Object { -not (Test-Path (Join-Path $ProjectRoot $_) -PathType Leaf) })
     if ($missing.Count -gt 0) {
         Write-Safe ("Missing mandatory files: " + ($missing -join ", "))
         return $false
@@ -193,6 +193,7 @@ if (-not $BackendOnly) {
     $FrontendDirectory = Join-Path $ProjectRoot "frontend"
     $Typecheck = Invoke-Check "Frontend type-check" "npm" @("run", "typecheck") $FrontendDirectory
     $Lint = Invoke-Check "Frontend lint" "npm" @("run", "lint") $FrontendDirectory
+    $Tooling = Invoke-Check "Frontend runtime and lint compatibility" "npm" @("run", "check:tooling") $FrontendDirectory
     $FrontendTests = Invoke-Check "Frontend tests" "npm" @("run", "test") $FrontendDirectory
     if ($Fast) {
         Set-Result "Production frontend build" "SKIP (-Fast; run the complete command before release)"
@@ -200,7 +201,7 @@ if (-not $BackendOnly) {
         $FrontendBuild = Invoke-Check "Production frontend build" "npm" @("run", "build") $FrontendDirectory
     }
 } else {
-    foreach ($name in @("Frontend type-check", "Frontend lint", "Frontend tests", "Production frontend build")) { Set-Result $name "SKIP (BackendOnly)" }
+    foreach ($name in @("Frontend type-check", "Frontend lint", "Frontend runtime and lint compatibility", "Frontend tests", "Production frontend build")) { Set-Result $name "SKIP (BackendOnly)" }
 }
 
 Write-Safe ""

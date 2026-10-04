@@ -1,12 +1,15 @@
 """Analytics/CSV behavior that does not require MySQL."""
 
+import os
+
 import pandas as pd
 
 from services.analytics_service import to_csv
 
 
 def test_csv_export_handles_empty_report() -> None:
-    assert to_csv([]) == b"\n"
+    # pandas defaults to the host line separator; keep an exact-byte assertion.
+    assert to_csv([]) == os.linesep.encode("utf-8")
 
 
 def test_csv_export_preserves_columns_and_rows() -> None:

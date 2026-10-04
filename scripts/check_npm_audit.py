@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import shutil
 import subprocess
 import sys
 from pathlib import Path
@@ -21,7 +22,7 @@ KNOWN_CHAIN = {
 
 def audit(*args: str) -> dict:
     result = subprocess.run(
-        ["npm", "audit", "--json", *args],
+        [shutil.which("npm") or "npm", "audit", "--json", *args],
         cwd=FRONTEND,
         text=True,
         capture_output=True,
