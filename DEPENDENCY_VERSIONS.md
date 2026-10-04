@@ -19,7 +19,7 @@ The archive records its exact source in `SOURCE_COMMIT.txt`. Python direct requi
 | plotly | 6.9.0 |
 | python-dotenv | 1.2.4 |
 | bcrypt | 4.3.0 |
-| pytest | 8.4.2 |
+| pytest | 9.0.3 |
 | fastapi | 0.141.1 |
 | uvicorn[standard] | 0.54.0 |
 | httpx | 0.28.1 |
@@ -52,3 +52,5 @@ ESLint 10.11.0 runs the existing Next/React/accessibility rules through the offi
 SQLAlchemy remains on supported 2.0 maintenance (2.0.54); the 2.1 migration is deferred pending live MySQL acceptance. PyMySQL is frozen at 1.2.3 to retain the upstream 1.2.1 security fix, which must not be discarded by downgrading. pandas remains 2.3.3 until report/CSV/fallback migration acceptance for pandas 3.
 
 The npm audit policy remains unchanged: zero runtime findings; only the exact development-only GHSA-vfj7-8cjw-p6xm chain can be excepted. The intended host must repeat audits. Locks make installation reproducible within the stated architecture/runtime targets; they do not make the bundle fully air-gapped or prove live MySQL/Windows/role acceptance.
+
+The new post-interruption PR #22 consistently updated the direct pytest pin and both hashed locks to 9.0.3. Its official stable release fixes CVE-2025-71176 and supports Python 3.12. The existing Linux and Windows gates passed on its exact head; the final package repeats its extracted-source gates. No application, schema or test assertion changed in this update.
