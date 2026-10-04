@@ -1,0 +1,39 @@
+name: MatCount release source integrity
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  integrity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out without persisted credentials
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      - name: Verify committed archive digest and safe source
+        run: python scripts/verify_release_artifacts.py
+
+      - name: Verify frozen schema, views and academic demonstrations
+        run: python scripts/validate_sql_contract.py
+
+      - name: Verify documentation file links
+        run: python scripts/check_docs_links.py
+
+      - name: Scan secrets and browser database boundary
+        run: python scripts/scan_secrets.py
+
+      # The immutable ZIP is a prerelease asset, not a repository file.
+      # Download-and-hash verification is a required manual publication gate.

@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "If you use MatCount in academic work, cite this software and both project authors."
+type: software
+title: MatCount
+repository-code: "https://github.com/DevenGaikwad/MatCount"
+abstract: "Smart Electronics Lab and Component Management System (SEMS): an academic MySQL-backed laboratory inventory and workflow project."
+authors:
+  - family-names: Anand
+    given-names: Aaryan Sachin
+  - family-names: Gaikwad
+    given-names: Deven Sachin

@@ -1,0 +1,59 @@
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+!frontend/.env.local.example
+.streamlit/secrets.toml
+*.local
+secrets/
+private/
+
+# Python environments and caches
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+coverage/
+
+# Runtime output
+logs/*
+!logs/.gitkeep
+exports/*
+!exports/.gitkeep
+*.log
+npm-debug.log*
+*.tmp
+*.bak
+*.sqlite
+*.sqlite3
+*.db
+*.sql.gz
+
+# IDE / operating-system noise
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Local coverage/build artifacts
+.coverage
+htmlcov/
+dist/
+build/
+*.egg-info/
+
+# Modern frontend dependencies and generated output
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/.env.local
+frontend/.env.*.local
+frontend/coverage/
+frontend/*.tsbuildinfo
+
+# Original archives and private rollback artifacts belong in GitHub Releases or private storage
+*.zip
+*.tar.gz

@@ -1,0 +1,36 @@
+[
+  {
+    "academic_demo": true,
+    "part_number": "LM358",
+    "component_name": "Dual Operational Amplifier",
+    "category": "Integrated Circuit",
+    "unit_of_measure": "piece",
+    "specifications": {
+      "channels": 2,
+      "supply_voltage_v": {
+        "minimum": 3,
+        "maximum": 32
+      },
+      "package": "DIP-8"
+    },
+    "permitted_labs": [
+      "Analog Electronics Laboratory",
+      "Embedded Systems Laboratory"
+    ]
+  },
+  {
+    "academic_demo": true,
+    "part_number": "STM32F103C8T6",
+    "component_name": "32-bit Microcontroller",
+    "category": "Microcontroller",
+    "unit_of_measure": "piece",
+    "specifications": {
+      "core": "Arm Cortex-M3",
+      "flash_kb": 64,
+      "package": "LQFP-48"
+    },
+    "permitted_labs": [
+      "Embedded Systems Laboratory"
+    ]
+  }
+]
