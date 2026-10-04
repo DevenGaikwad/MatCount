@@ -17,6 +17,8 @@ MatCount is the repository and product-facing name of the Smart Electronics Lab 
 
 Academic context: DES Pune University, School of Engineering and Technology, Department of Electronics and Communication Engineering; academic year 2026–27; ETCS302 DBMS demonstration. No institutional endorsement is claimed. See [AUTHORS.md](AUTHORS.md), [CONTRIBUTORS.md](CONTRIBUTORS.md) and [CITATION.cff](CITATION.cff).
 
+See the [offline faculty baseline and exact RC1 source comparison](docs/OFFLINE_FACULTY_DEMONSTRATION_BASELINE.md) before selecting a demonstration package.
+
 ## Quick navigation
 
 | Purpose | Start here |
