@@ -15,3 +15,11 @@ On Unix-like systems, substitute `./MatCount_SEMS_v2_Academic_Release_Candidate_
 After upload, download the candidate asset afresh, rerun the verifier and confirm its tag points to the reviewed commit. A clean extraction may omit the candidate's own checksum to avoid the self-hashing impossibility; pass `--manifest` with the separately downloaded `.sha256` file if verifying there. Do not promote to final until the Windows/MySQL/Workbench and human acceptance tasks are complete. Preserve the original v2 and private rollback artifacts separately.
 
 See the [offline faculty baseline](../docs/OFFLINE_FACULTY_DEMONSTRATION_BASELINE.md) for the immutable archive hashes, exact commit mapping and complete functional-parity comparison.
+
+## Current frozen offline RC2
+
+RC1 remains the unchanged provenance snapshot. The selected current candidate is `v2.0.0-rc.2`, built from the reviewed release branch with one versioned folder named `MatCount_SEMS_v2_Offline_Faculty_Demo_FINAL_v2.0.0-rc.2`. Its ZIP, external checksum, per-file manifest and observed validation report are separate release assets. Download all four and verify the checksum before extraction. Start at [FACULTY_DEMO_START_HERE.md](../FACULTY_DEMO_START_HERE.md). The filename's `FINAL` refers to the frozen demo bundle, not academic acceptance.
+
+The publication workflow verifies Git blob hashes, all manifest entries after clean extraction into a path containing spaces, server-independent checks and actual localhost API/frontend startup. It uploads once, downloads every asset afresh and requires byte-identical SHA-256 and size. It refuses to move existing tags or overwrite an existing release. Release-service immutability and public repository settings must be checked separately; operational tag/hash preservation does not assert that GitHub's immutable-release feature is enabled.
+
+Windows CI checks syntax and clean dependency/application gates. The intended Windows laptop, MySQL 8.4.11, all 20 database integration tests, genuine Workbench/four-role/visual evidence and faculty acceptance remain pending.

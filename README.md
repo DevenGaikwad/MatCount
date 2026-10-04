@@ -8,7 +8,7 @@ MatCount is the repository and product-facing name of the Smart Electronics Lab 
 
 > **Release-candidate boundary:** Source professionalization and server-independent checks are complete. The frozen production design has **13 relations and seven views**. Fresh Windows, MySQL 8.4.11, MySQL Workbench, four-role workflow and genuine visual acceptance are still required. This repository does **not** claim final academic-release acceptance.
 
-> **Security update (2026-10-04):** The original v2 archive remains unchanged as private provenance. This candidate pins patched Next.js 16.3.6 and resolves sharp 0.35.5. The runtime npm audit reports **zero findings**. One unfixed, development-only `braces` advisory affects five tooling packages; an exact CI gate rejects any new advisory or runtime finding. See the [current security review](docs/SECURITY_REMEDIATION_2026-10-04.md) and [original finding](docs/PUBLICATION_READINESS_2026-10-04.md).
+> **Security update (2026-10-04):** The original v2 archive remains unchanged as private provenance. This candidate pins patched Next.js 16.3.8 and resolves sharp 0.35.5. The runtime npm audit reports **zero findings**. One unfixed, development-only `braces` advisory affects five tooling packages; an exact CI gate rejects any new advisory or runtime finding. See the [RC2 freeze review](docs/RC2_FREEZE_REVIEW.md), [RC1 security review](docs/SECURITY_REMEDIATION_2026-10-04.md) and [original finding](docs/PUBLICATION_READINESS_2026-10-04.md).
 
 | Team member (ascending PRN) | PRN | Project/repository status |
 |---|---:|---|
@@ -16,6 +16,8 @@ MatCount is the repository and product-facing name of the Smart Electronics Lab 
 | Deven Sachin Gaikwad | 1022411052 | Academic project team member; repository owner `DevenGaikwad` |
 
 Academic context: DES Pune University, School of Engineering and Technology, Department of Electronics and Communication Engineering; academic year 2026–27; ETCS302 DBMS demonstration. No institutional endorsement is claimed. See [AUTHORS.md](AUTHORS.md), [CONTRIBUTORS.md](CONTRIBUTORS.md) and [CITATION.cff](CITATION.cff).
+
+Start the frozen RC2 demonstration at [FACULTY_DEMO_START_HERE.md](FACULTY_DEMO_START_HERE.md); follow [OFFLINE_SETUP_WINDOWS.md](OFFLINE_SETUP_WINDOWS.md), [exact dependency versions](DEPENDENCY_VERSIONS.md) and [validation boundaries](VALIDATION_SUMMARY.md).
 
 See the [offline faculty baseline and exact RC1 source comparison](docs/OFFLINE_FACULTY_DEMONSTRATION_BASELINE.md) before selecting a demonstration package.
 
@@ -64,7 +66,7 @@ The project intentionally excludes procurement, maintenance, serialized assets, 
 | Database | MySQL Community Server 8.4.11 LTS, InnoDB, utf8mb4 |
 | SQL client | MySQL Workbench (build, inspection and faculty demonstration) |
 | Language/runtime | Python 3.12+ |
-| Canonical frontend | Next.js 16 + React 19 + TypeScript 5.9 + Tailwind CSS 4 |
+| Canonical frontend | Next.js 16 + React 19 + TypeScript 6.0 + Tailwind CSS 4 |
 | HTTP boundary | FastAPI + Uvicorn; opaque process-local bearer sessions |
 | Preserved fallback | Streamlit |
 | Data access | SQLAlchemy 2.x + PyMySQL |
@@ -111,8 +113,8 @@ MySQL Workbench is an independent SQL client for executing and demonstrating the
 - MySQL Community Server **8.4.11 LTS**.
 - MySQL Workbench compatible with the installed server.
 - Git for cloning the published repository.
-- Python **3.12+**.
-- Node.js **20.9+** (Node.js 24 recommended for the locked frontend).
+- Python **3.12**.
+- Node.js **24.19.0 LTS** and npm **11.9.0** for the frozen frontend.
 - VS Code and its Python extension (recommended).
 
 ## Database build in MySQL Workbench
@@ -147,7 +149,7 @@ In the VS Code terminal, from this repository:
 py -3.12 -m venv .venv
 .\.venv\Scripts\Activate.ps1
 python -m pip install --upgrade pip
-pip install -r requirements.txt
+python -m pip install --require-hashes -r requirements-windows.lock.txt
 Set-Location frontend
 npm ci
 Set-Location ..

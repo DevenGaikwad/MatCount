@@ -90,3 +90,19 @@ The historical `SEMS_Release_Candidate.zip` remains the protected rollback archi
 ## Evidence rule
 
 Static validation is not live MySQL execution. A skipped integration case is not a pass. A successful production build is not human visual acceptance. No screenshot, public URL, repository publication or final-release claim is fabricated.
+
+## Publication and offline RC2 addendum — 2026-10-04
+
+The preceding August checkpoint is historical. The live repository has successful remote CI; the current source freeze and actual release evidence are separate records.
+
+| Path/group | Purpose | Evidence boundary |
+|---|---|---|
+| `docs/OFFLINE_FACULTY_DEMONSTRATION_BASELINE.md` | Original v2/RC1 hashes, exact 33-path parity and commit mapping | Independently verified provenance |
+| `docs/RC2_FREEZE_REVIEW.md` | Reviewed dependency/security/tooling decisions | Native legacy-plugin peer warnings disclosed |
+| `FACULTY_DEMO_START_HERE.md`, `OFFLINE_SETUP_WINDOWS.md` | Frozen local Windows faculty instructions | Intended-host execution pending |
+| `DEPENDENCY_VERSIONS.md`, `requirements-*.lock.txt` | Exact runtime/dependency record and hashed Python wheels | Platform-specific installation checked by CI |
+| `VALIDATION_SUMMARY.md` | Scope and pending acceptance | Not a final academic acceptance report |
+| `scripts/package_offline_demo.py`, `scripts/validate_offline_candidate.py` | Exact Git-source packaging and clean extracted-source gates | Reports generated externally from actual results |
+| `.github/workflows/offline-prerelease.yml` | Windows checks, restricted prerelease publication and fresh asset-download verification | No repository-admin or public-visibility authority |
+
+RC2 includes all source, SQL, academic material, tests, examples and runbooks. Its external ZIP checksum, complete per-file manifest and observed validation report avoid self-hashing. Preserve the unchanged original v2 and RC1 bytes privately; demonstrate an immutable reviewed candidate rather than the moving `main` branch.

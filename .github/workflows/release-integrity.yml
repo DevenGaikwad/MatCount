@@ -36,4 +36,4 @@ jobs:
         run: python scripts/scan_secrets.py
 
       # The immutable ZIP is a prerelease asset, not a repository file.
-      # Download-and-hash verification is a required manual publication gate.
+      # The restricted offline-prerelease workflow verifies fresh asset downloads.

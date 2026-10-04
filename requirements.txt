@@ -1,11 +1,12 @@
-streamlit>=1.41,<2
-SQLAlchemy>=2.0.36,<3
-PyMySQL>=1.1.1,<2
-pandas>=2.2,<3
-plotly>=5.24,<7
-python-dotenv>=1.2.4,<2
-bcrypt>=4.2,<5
-pytest>=8.3,<9
-fastapi>=0.141,<0.142
-uvicorn[standard]>=0.54.0,<1
-httpx>=0.28,<0.29
+# Frozen direct dependencies for the RC2 faculty candidate; see platform locks.
+streamlit==1.65.0
+SQLAlchemy==2.0.54
+PyMySQL==1.2.3
+pandas==2.3.3
+plotly==6.9.0
+python-dotenv==1.2.4
+bcrypt==4.3.0
+pytest==8.4.2
+fastapi==0.141.1
+uvicorn[standard]==0.54.0
+httpx==0.28.1

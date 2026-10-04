@@ -69,8 +69,8 @@ def check_source() -> None:
 
 
 def check_archive(path: Path, external_manifest: Path | None) -> None:
-    if not path.is_file() or path.name not in {ORIGINAL_NAME, CANDIDATE_NAME}:
-        raise ValueError("provide the named original v2 or reviewed MatCount RC1 archive")
+    if not path.is_file() or not (path.name in {ORIGINAL_NAME, CANDIDATE_NAME} or re.fullmatch(r"MatCount_SEMS_v2_Offline_Faculty_Demo_FINAL_v2\.0\.0-rc\.[1-9][0-9]*\.zip", path.name)):
+        raise ValueError("provide the named original v2 or a versioned reviewed MatCount candidate archive")
     manifest = external_manifest or ROOT / "release" / f"{path.name}.sha256"
     expected = read_manifest(manifest, path.name)
     if path.name == ORIGINAL_NAME and expected != ORIGINAL_SHA256:
