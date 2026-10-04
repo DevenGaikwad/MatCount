@@ -8,6 +8,8 @@ const reactDom = packageRequire("react-dom/package.json").version;
 assert.equal(react, reactDom, "React and React DOM must resolve to the same version");
 assert.equal(Number(process.versions.node.split(".")[0]), 24, "Use the documented Node 24 runtime");
 
+assert.ok(process.env.npm_config_user_agent?.startsWith("npm/11.9.0 "), "Run with the frozen npm 11.9.0 runtime");
+
 // Exercise the old plugin APIs through the official compatibility adapter.
 // A valid project alone would not prove that these rules still detect errors.
 const eslint = new ESLint();

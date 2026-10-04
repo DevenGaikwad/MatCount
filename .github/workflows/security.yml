@@ -39,5 +39,7 @@ jobs:
       - uses: actions/setup-python@v7
         with:
           python-version: "3.12"
+      - name: Install frozen npm runtime
+        run: npm install --global npm@11.9.0
       - name: Gate runtime audit and exact documented dev-only advisory
         run: python scripts/check_npm_audit.py

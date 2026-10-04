@@ -16,9 +16,9 @@ This is an academic release candidate. Actual Windows laptop/MySQL 8.4.11/Workbe
 
 ## Source and acceptance tooling
 
-Application, UI feature, API, service, repository, model, test, production SQL/seed and academic-demo files remain byte-identical to the original v2 faculty baseline. Only dependency/security manifests, tooling, CI and documentation change.
+Application, UI feature, API, service, repository, model, production SQL/seed and academic-demo files remain byte-identical to the original v2 faculty baseline. Existing tests remain unchanged except `tests/test_analytics.py`: the empty-CSV assertion now requires the exact host `os.linesep` bytes instead of hard-coding Linux LF. Windows CI observed CRLF from unchanged pandas/export code. This matches [pandas documentation](https://pandas.pydata.org/pandas-docs/version/2.3/reference/api/pandas.DataFrame.to_csv.html); it skips no test and preserves the application output. Other differences are dependency/security manifests, tooling, CI and documentation.
 
-The Windows orchestrator had a missing closing parenthesis in its required-file check. The correction preserves its existing fail-closed behavior. Windows CI parses every PowerShell script and runs server-independent gates; it does not execute the database acceptance orchestrator or claim a laptop result. The audit wrapper resolves `npm.cmd` on Windows while preserving the existing exact advisory policy.
+The Windows orchestrator had a missing closing parenthesis in its required-file check. The correction preserves its existing fail-closed behavior. Windows CI parses every PowerShell script and runs server-independent gates; it does not execute the database acceptance orchestrator or claim a laptop result. CI explicitly installs npm 11.9.0 because setup-node supplied npm 11.17.0 on the Windows runner. The audit wrapper resolves `npm.cmd` on Windows while preserving the existing exact advisory policy.
 
 The deterministic bundle is generated from a selected Git commit, verifies every blob, excludes dependencies/build/private data, uses one versioned root and adds only `SOURCE_COMMIT.txt` distribution metadata. ZIP SHA-256, CRC, safe names, clean extraction with spaces and every manifest entry are checked. Separate observed reports avoid a self-hashing archive.
 
