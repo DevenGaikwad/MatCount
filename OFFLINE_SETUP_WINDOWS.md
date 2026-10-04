@@ -8,8 +8,11 @@ Open the newly extracted versioned folder in VS Code. Paths containing spaces ar
 
 ```powershell
 py -3.12 -m venv .venv
+.\.venv\Scripts\Activate.ps1
 .\.venv\Scripts\python.exe -m pip install --require-hashes -r requirements-windows.lock.txt
 .\.venv\Scripts\python.exe -m pip check
+npm install --global npm@11.9.0
+npm --version
 Push-Location frontend
 npm ci
 Pop-Location

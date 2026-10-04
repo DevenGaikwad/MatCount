@@ -14,6 +14,8 @@ This is an academic release candidate. Actual Windows laptop/MySQL 8.4.11/Workbe
 - PyMySQL stays at 1.2.3 to retain the 1.2.1 security fix. PR #13's range-only proposal is superseded by the explicit exact freeze, not by a downgrade. [Official changelog](https://github.com/PyMySQL/PyMySQL/blob/main/CHANGELOG.md).
 - Reviewed setup-node 7, python-dotenv 1.2.4 and Uvicorn 0.54.0 updates are retained. No API server feature flags, schema or authorization policy change.
 
+- Post-interruption pytest PR #22 updates the direct pin and both hashed locks to stable 9.0.3. Its official release fixes CVE-2025-71176; the exact head passed all required Linux and Windows gates. [Official pytest 9.0.3 release](https://github.com/pytest-dev/pytest/releases/tag/9.0.3).
+
 ## Source and acceptance tooling
 
 Application, UI feature, API, service, repository, model, production SQL/seed and academic-demo files remain byte-identical to the original v2 faculty baseline. Existing tests remain unchanged except `tests/test_analytics.py`: the empty-CSV assertion now requires the exact host `os.linesep` bytes instead of hard-coding Linux LF. Windows CI observed CRLF from unchanged pandas/export code. This matches [pandas documentation](https://pandas.pydata.org/pandas-docs/version/2.3/reference/api/pandas.DataFrame.to_csv.html); it skips no test and preserves the application output. Other differences are dependency/security manifests, tooling, CI and documentation.

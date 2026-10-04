@@ -9,6 +9,7 @@ import platform
 import shutil
 import subprocess
 import sys
+import time
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -47,18 +48,24 @@ def main() -> int:
         ("local-service-startup", [sys.executable, "scripts/smoke_local_services.py"], root),
     ]
     report = {
+        "source_commit": (root / "SOURCE_COMMIT.txt").read_text().splitlines()[0] if (root / "SOURCE_COMMIT.txt").exists() else os.environ.get("GITHUB_SHA", "uncommitted local staging"),
         "time_utc": datetime.now(timezone.utc).isoformat(),
         "platform": platform.platform(),
         "python": platform.python_version(),
+        "node": subprocess.check_output([shutil.which("node") or "node", "--version"], text=True).strip(),
+        "npm": subprocess.check_output([npm, "--version"], text=True).strip(),
         "checks": [],
         "pending": ["intended Windows laptop", "MySQL 8.4.11 and 20 integration tests", "Workbench/CLI proof", "four-role workflows", "genuine visual/accessibility and faculty acceptance"],
     }
+    validation_started = time.monotonic()
     for name, command, cwd in checks:
         print(f"Running {name}...", flush=True)
-        completed = subprocess.run(command, cwd=cwd, env=env, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, timeout=900, check=False)
+        started = time.monotonic()
+        completed = subprocess.run(command, cwd=cwd, env=env, text=True, encoding="utf-8", errors="replace", stdout=subprocess.PIPE, stderr=subprocess.STDOUT, timeout=900, check=False)
         log = logs / f"{name}.txt"
         log.write_text(completed.stdout, encoding="utf-8")
-        report["checks"].append({"name": name, "exit_code": completed.returncode, "output": completed.stdout})
+        report["checks"].append({"name": name, "command": command, "cwd": str(cwd), "duration_seconds": round(time.monotonic() - started, 3), "exit_code": completed.returncode, "output": completed.stdout})
+        report["total_duration_seconds"] = round(time.monotonic() - validation_started, 3)
         output.write_text(json.dumps(report, indent=2), encoding="utf-8")
         if completed.returncode:
             print(f"FAIL: {name}; see {log}", flush=True)

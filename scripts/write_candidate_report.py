@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import json
 import re
+import subprocess
 from pathlib import Path
 
 
@@ -16,6 +17,8 @@ def main() -> int:
     package = json.loads((directory / "package-result.json").read_text())
     validation = json.loads((directory / "validation-result.json").read_text())
     checks = validation["checks"]
+    if validation["source_commit"] != package["commit"]:
+        raise ValueError("Validation source commit does not match the packaged source")
     if any(check["exit_code"] for check in checks) or len(checks) != 17:
         raise ValueError("Require the complete successful configured gate set")
     observed = {}
@@ -38,6 +41,15 @@ def main() -> int:
         if check["name"] == "local-service-startup":
             detail += "; actual localhost API health and production login HTTP 200; no live MySQL acceptance"
         lines.append(f"| {check['name']} | {detail} |")
+    lines += ["", f"Observed Node: {validation['node']}; npm: {validation['npm']}; total gate duration: {validation['total_duration_seconds']} seconds.", "", "### Exact commands and durations", "", "Commands below ran from the extracted root unless the directory is frontend. Host-specific absolute executable/root prefixes are shown relative to the bundle for readability; raw argv and working directories are retained in validation-result.json.", "", "| Gate | Directory | Command | Duration (seconds) |", "|---|---|---|---:|"]
+    for check in checks:
+        command = list(check["command"])
+        if command[0].lower().endswith(("python", "python.exe")):
+            command[0] = "python"
+        elif command[0].lower().endswith(("npm", "npm.cmd")):
+            command[0] = "npm"
+        cwd = "frontend" if Path(check["cwd"]).name == "frontend" else "."
+        lines.append(f"| {check['name']} | {cwd} | `{subprocess.list2cmdline(command)}` | {check['duration_seconds']} |")
     lines += ["", "## Frozen dependency snapshot", "", "| Dependency | Exact version |", "|---|---|"]
     for name in ["next", "sharp", "react", "react-dom", "typescript", "eslint", "@eslint/compat", "vitest"]:
         lines.append(f"| {name} | {lock['node_modules/' + name]['version']} |")
