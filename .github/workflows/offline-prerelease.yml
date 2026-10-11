@@ -47,7 +47,7 @@ jobs:
         run: |
           python scripts/validate_offline_candidate.py --root . --output "$env:RUNNER_TEMP/windows-validation-result.json"
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
-      - uses: actions/upload-artifact@v7.0.1
+      - uses: actions/upload-artifact@v7.0.2
         if: always()
         with:
           name: windows-candidate-evidence
@@ -91,7 +91,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python scripts/publish_verified_candidate.py --directory "$RUNNER_TEMP/matcount-rc2"
-      - uses: actions/upload-artifact@v7.0.1
+      - uses: actions/upload-artifact@v7.0.2
         if: always()
         with:
           name: verified-matcount-offline-rc2
