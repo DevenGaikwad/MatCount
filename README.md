@@ -1,351 +1,168 @@
-# MatCount
+# MatCount · SEMS
 
 ## Smart Electronics Lab and Component Management System
 
-**SEMS v2 source complete · Final Windows/MySQL acceptance pending**
+Centralized electronic-component stock, laboratory requests and accountable inter-laboratory movement, implemented in MySQL and demonstrated through a role-aware web application.
 
-MatCount is the repository and product-facing name of the Smart Electronics Lab and Component Management System, whose implementation and database artifacts retain the established **SEMS** naming convention. This academic full-stack project manages electronic components, laboratory stock, requests, inter-laboratory transfers and faculty SQL demonstrations.
+**DES Pune University · School of Engineering and Technology**
 
-> **Release-candidate boundary:** Source professionalization and server-independent checks are complete. The frozen production design has **13 relations and seven views**. Fresh Windows, MySQL 8.4.11, MySQL Workbench, four-role workflow and genuine visual acceptance are still required. This repository does **not** claim final academic-release acceptance.
+Third Year B.Tech Electronics and Communication Engineering (AI & ML) · Division A · Semester I · AY 2026–2027
 
-> **Security update (2026-10-04):** The original v2 archive remains unchanged as private provenance. This candidate pins patched Next.js 16.3.8 and resolves sharp 0.35.5. The runtime npm audit reports **zero findings**. One unfixed, development-only `braces` advisory affects five tooling packages; an exact CI gate rejects any new advisory or runtime finding. See the [RC2 freeze review](docs/RC2_FREEZE_REVIEW.md), [RC1 security review](docs/SECURITY_REMEDIATION_2026-10-04.md) and [original finding](docs/PUBLICATION_READINESS_2026-10-04.md).
+![Genuine Administrator dashboard captured on the Windows demonstration laptop](docs/screenshots/faculty-2026-10-10/administrator-dashboard.png)
 
-| Team member (ascending PRN) | PRN | Project/repository status |
-|---|---:|---|
-| Aaryan Sachin Anand | 1022411049 | Academic project team member; GitHub invitation pending exact account verification |
-| Deven Sachin Gaikwad | 1022411052 | Academic project team member; repository owner `DevenGaikwad` |
+*Genuine 10 October 2026 capture; displayed totals are a dated demonstration state. Images are preserved byte-for-byte. MatCount is the repository/product name; SEMS is the established application and database naming convention.*
 
-Academic context: DES Pune University, School of Engineering and Technology, Department of Electronics and Communication Engineering; academic year 2026–27; ETCS302 DBMS demonstration. No institutional endorsement is claimed. See [AUTHORS.md](AUTHORS.md), [CONTRIBUTORS.md](CONTRIBUTORS.md) and [CITATION.cff](CITATION.cff).
+### Evidence and release status
 
-Start the frozen RC2 demonstration at [FACULTY_DEMO_START_HERE.md](FACULTY_DEMO_START_HERE.md); follow [OFFLINE_SETUP_WINDOWS.md](OFFLINE_SETUP_WINDOWS.md), [exact dependency versions](DEPENDENCY_VERSIONS.md) and [validation boundaries](VALIDATION_SUMMARY.md).
+The supplied Windows evidence shows a healthy `sems_db`, four-role workflows, persisted faculty review and **all listed laptop acceptance gates PASS**. The independent 11 October review passed **151 Python tests including MySQL integration** and **10 frontend tests**, type checking, lint, tooling compatibility and production build. The npm gate reports zero runtime findings and the existing exact development-only exception. See [dated review and limits](docs/FACULTY_PROGRESS_REVIEW_2026-10-11.md).
 
-See the [offline faculty baseline and exact RC1 source comparison](docs/OFFLINE_FACULTY_DEMONSTRATION_BASELINE.md) before selecting a demonstration package.
+The published **v2.0.0-rc.2 archive/tag remains immutable**. This development revision includes the reviewed MySQL CHECK/FK build correction, CHECK regression correction, `source-map-js` 1.2.2 lock update and an explicit quantity-based Reports summary. Laptop evidence is from the privately corrected installation; it does not claim that an unchanged RC2 fresh build had no defect. Final institutional acceptance, certificate signatures and a genuine plagiarism result remain pending.
 
-## Quick navigation
+## Navigation
 
-| Purpose | Start here |
+| Purpose | Reference |
 |---|---|
-| Faculty walkthrough | [Faculty demo guide](docs/FACULTY_DEMO_GUIDE.md), [Workbench execution guide](docs/MYSQL_WORKBENCH_EXECUTION_GUIDE.md) |
-| Schema and syllabus | [Schema dictionary](docs/schema_dictionary.md), [ETCS302 matrix](docs/ETCS302_SYLLABUS_TRACEABILITY_MATRIX.md) |
-| Security and roles | [RBAC matrix](docs/RBAC_PERMISSION_MATRIX.md), [security policy](SECURITY.md) |
-| Validation and screenshots | [Current security review](docs/SECURITY_REMEDIATION_2026-10-04.md), [project state](docs/PROJECT_STATE.md), [acceptance checklist](docs/LOCAL_ACCEPTANCE_CHECKLIST.md), [evidence plan](docs/SCREENSHOT_EVIDENCE_PLAN.md) |
-| Collaboration | [Contributing](CONTRIBUTING.md), [publication runbook](docs/GITHUB_PUBLICATION_RUNBOOK.md), [changelog](CHANGELOG.md), [release integrity](release/README.md) |
+| Existing installed faculty demonstration | [Current startup and review guide](docs/FACULTY_PROGRESS_REVIEW_2026-10-11.md), [RC2 start page](FACULTY_DEMO_START_HERE.md) |
+| New-machine setup | [Windows offline setup](OFFLINE_SETUP_WINDOWS.md), [dependency versions](DEPENDENCY_VERSIONS.md) |
+| Design and dependencies | [Physical dictionary](docs/schema_dictionary.md), [formal normalization review](docs/NORMALIZATION_PROOF.md), [ER mapping](docs/ER_TO_RELATIONAL_MAPPING.md) |
+| Workbench and academic SQL | [Execution guide](docs/MYSQL_WORKBENCH_EXECUTION_GUIDE.md), [syllabus matrix](docs/ETCS302_SYLLABUS_TRACEABILITY_MATRIX.md), [faculty SQL](docs/FACULTY_DEMO_GUIDE.md) |
+| Roles and transactions | [Permission matrix](docs/RBAC_PERMISSION_MATRIX.md), [concurrency/recovery](docs/TRANSACTION_CONCURRENCY_RECOVERY_REPORT.md) |
+| Evidence and provenance | [Curated screenshot mapping](docs/screenshots/faculty-2026-10-10/README.md), [historical RC2 validation](VALIDATION_SUMMARY.md), [release integrity](release/README.md) |
+| Collaboration and security | [Authors](AUTHORS.md), [contribution guide](CONTRIBUTING.md), [security policy](SECURITY.md) |
 
-SEMS is a Third-Year B.Tech DBMS mini-project for centralized visibility and controlled movement of electronic components across engineering laboratories. It combines a normalized 13-relation MySQL schema, a modular Python business layer, a thin FastAPI boundary and a professional Next.js/React interface. The preserved Streamlit implementation remains a fallback during final local acceptance.
+## Implemented features
 
-**Formal title:** Centralized Electronic Component and Laboratory Asset Management System  
-**Database:** MySQL Community Server 8.4.11 LTS  
-**Full-project database:** `sems_db`  
-**Canonical web interface:** `frontend/` + `api/main.py`  
-**Preserved fallback:** `app.py` (Streamlit)
+- Laboratory/contact, user/phone, category/component and storage-location masters.
+- Free and reserved stock, authorized valuation and low-stock reporting.
+- Multi-line requests, bounded approval quantities and partial review results.
+- Transfer planning, Administrator approval, reservation, dispatch and receipt.
+- Temporary whole-line returns and overdue-return reporting.
+- Administrator-authorized disposal and retained event history.
+- Seven reporting views, a read-only procedure, a deterministic function, two ownership triggers and formula-safe CSV export.
+- Backend role/lab checks and financial minimization, plus isolated academic SQL exercises.
 
-## Problem and academic purpose
+Procurement, serialized asset tracking, QR, maintenance, AI, IoT and cloud hosting are future scope.
 
-Engineering laboratories often keep components in disconnected spreadsheets, notebooks or local registers. This makes quantity/location discovery slow, allows duplicate allocation, and leaves request, dispatch, receipt, return and disposal history difficult to reconcile. SEMS models those facts as related, constrained transactions. Its academic purpose is to demonstrate normalized ER/EER mapping, integrity constraints, views/indexes/routines/triggers, ACID transactions, row locking, RBAC and a real MySQL-backed frontend—not only inventory CRUD.
+## MySQL-centred architecture
 
-## Implemented MVP
+```mermaid
+flowchart TD
+    UI["Browser · Next.js :3000"] --> API["FastAPI :8000"]
+    API --> SVC["Python services · roles, scope, transactions"]
+    SVC --> DATA["Repositories · SQLAlchemy · PyMySQL"]
+    DATA --> DB[("MySQL 8.4.11 · sems_db")]
+    WB["MySQL Workbench / mysql client"] --> DB
+    ST["Preserved Streamlit interface"] --> SVC
+```
 
-- Four roles: Student, Faculty, Lab Assistant and Administrator.
-- Laboratory, contact, user, phone, category, component and storage masters.
-- Free/reserved inventory, valuation and low-stock reporting.
-- Multi-line component requests and faculty approval.
-- Inter-laboratory planning, reservation, dispatch and receipt.
-- Temporary return tracking and overdue-return reporting.
-- Administrator-authorized disposal.
-- Seven SQL views, limited routines, narrow integrity triggers and CSV exports.
-- Isolated ETCS302 demonstrations for advanced SQL, cursor, trigger audit, savepoints, concurrency, deadlock, DCL and optional MongoDB CRUD/CAP study.
-- Backend-enforced financial minimization: Student/Faculty receive no cost or valuation fields; Student availability also omits coordinates and reserved/accounted quantities.
-- Central DESPU-inspired orange/white academic theme without copied logos/assets.
-
-The project intentionally excludes procurement, maintenance, serialized assets, QR infrastructure, AI, IoT and other frozen future-scope modules.
+Node.js and the browser do not connect directly to MySQL. Workbench is an independent client; the application continues when Workbench closes. The service layer owns validation and atomic workflow changes. The source engine uses READ COMMITTED; stock operations use ordered `FOR UPDATE` locks.
 
 ## Technology stack
 
-| Layer | Technology |
+| Layer | Reviewed source |
 |---|---|
-| Database | MySQL Community Server 8.4.11 LTS, InnoDB, utf8mb4 |
-| SQL client | MySQL Workbench (build, inspection and faculty demonstration) |
-| Language/runtime | Python 3.12+ |
-| Canonical frontend | Next.js 16 + React 19 + TypeScript 6.0 + Tailwind CSS 4 |
-| HTTP boundary | FastAPI + Uvicorn; opaque process-local bearer sessions |
-| Preserved fallback | Streamlit |
-| Data access | SQLAlchemy 2.x + PyMySQL |
-| Data/visualization | pandas + Plotly |
-| Authentication adapter | bcrypt hashes in protected local configuration |
-| Testing | pytest + FastAPI TestClient + Vitest + TypeScript + ESLint; isolated MySQL `_test` integration suite |
+| Database | MySQL Community Server 8.4.11, InnoDB, utf8mb4 |
+| Backend | Python 3.12, FastAPI, Uvicorn, SQLAlchemy 2.x, PyMySQL |
+| Browser interface | Next.js 16.3.8, React 19.3.0, TypeScript 6.0.3, Tailwind 4.3.3 |
+| Toolchain | Node.js 24.19.0, npm 11.9.0; locked dependencies |
+| Authentication | bcrypt hashes in private local configuration; process-local opaque sessions |
+| Verification | pytest, API tests, isolated MySQL integration, Vitest, tsc, ESLint and audit gate |
+| Preserved fallback | Streamlit, using the same Python services |
 
-## Frozen 13-relation schema
+## Database design and integrity
 
-`LAB`, `LAB_CONTACT`, `USER`, `USER_PHONE`, `COMPONENT_CATEGORY`, `COMPONENT`, `STORAGE_LOCATION`, `INVENTORY`, `COMPONENT_REQUEST`, `REQUEST_ITEM`, `TRANSFER`, `TRANSFER_ITEM`, `DISPOSAL_RECORD`.
+The frozen production contract has **13 relations and 83 columns**:
 
-REQUEST_ITEM and TRANSFER_ITEM are associative entities; LAB_CONTACT and USER_PHONE normalize multivalued attributes. No password, destination-inventory or LAB-status attribute is silently added.
+| Domain | Relations |
+|---|---|
+| Laboratory and accounts | `lab`, `lab_contact`, `user`, `user_phone` |
+| Catalogue and stock | `component_category`, `component`, `storage_location`, `inventory` |
+| Demand and movement | `component_request`, `request_item`, `transfer`, `transfer_item` |
+| Lifecycle events | `disposal_record` |
+
+Contacts and phones remove repeating groups. Request and transfer lines have stable surrogate identifiers plus unique natural pairs. Keys prevent missing parents and duplicates; checks bound quantities/dates and require distinct transfer laboratories. Two inventory triggers validate location ownership on child writes. Supported workflows also validate permissions and state before committing stock changes.
+
+**Formal normalization boundary:** most master and line relations satisfy 3NF under their stated dependencies. `inventory` retains `storage_location_id → lab_id`; the implied minimal key `(component_id, storage_location_id)` exposes a strict 2NF/3NF exception. `transfer` retains `request_id → destination_lab_id`, a strict 3NF exception under valid-workflow semantics. Nullable part/coordinate uniqueness is qualified. [Lossless logical alternatives and migration impact](docs/NORMALIZATION_PROOF.md) are documented; a blanket “all tables are 3NF” claim is not made.
 
 ## Roles
 
-| Role | Main scope |
-|---|---|
-| Student | Cross-lab catalogue/availability; own-lab request creation/submission and own progress |
-| Faculty | Own-lab request review and relevant transfer/report monitoring; no transfer approval/execution |
-| Lab Assistant | Own-lab storage/inventory; transfer planning, dispatch, receipt and whole-line return after approval |
-| Administrator | Global masters/users, request override, transfer approval/rejection, disposal and all-lab reporting |
-
-Navigation is filtered for usability; services independently enforce ACTIVE status, role, lab scope and current database identity.
-
-## Architecture
-
-```text
-Browser → Next.js / React / TypeScript
-        → FastAPI transport adapters
-        → Python services (RBAC, workflow, transactions)
-        → repositories → SQLAlchemy → PyMySQL → MySQL 8.4.11 / sems_db
-
-Preserved fallback: Streamlit pages → the same services → the same sems_db
-Independent SQL client: MySQL Workbench → the same sems_db
-```
-
-Node.js never connects to MySQL. API routes call services rather than repositories, and the service layer remains the single authority for validation, RBAC and transaction semantics.
-
-MySQL Workbench is an independent SQL client for executing and demonstrating the same `sems_db`. The application never depends on Workbench being open.
-
-## Prerequisites
-
-- Windows 10/11.
-- MySQL Community Server **8.4.11 LTS**.
-- MySQL Workbench compatible with the installed server.
-- Git for cloning the published repository.
-- Python **3.12**.
-- Node.js **24.19.0 LTS** and npm **11.9.0** for the frozen frontend.
-- VS Code and its Python extension (recommended).
-
-## Database build in MySQL Workbench
-
-Open and execute complete scripts in this order:
-
-1. `sql/00_database_setup.sql`
-2. `sql/01_schema.sql`
-3. `sql/02_indexes.sql`
-4. `sql/03_views.sql`
-5. `sql/04_routines.sql`
-6. `sql/05_triggers.sql`
-7. `sql/06_seed_data.sql`
-8. `sql/07_verification_queries.sql`
-
-Do not use the Assignment 2/3 database `smart_electronics_lab_ddl` for the full project. Follow [docs/MYSQL_WORKBENCH_EXECUTION_GUIDE.md](docs/MYSQL_WORKBENCH_EXECUTION_GUIDE.md) for inspection, reset and faculty-demonstration steps.
-
-## Python setup on Windows
-
-Clone the repository and enter the project directory:
-
-```powershell
-git clone https://github.com/DevenGaikwad/MatCount.git
-Set-Location MatCount
-```
-
-For the release-candidate ZIP, extract into a new directory and run the following commands there. Keep the separately verified original v2 ZIP intact; do not extract over existing private configuration.
-
-In the VS Code terminal, from this repository:
-
-```powershell
-py -3.12 -m venv .venv
-.\.venv\Scripts\Activate.ps1
-python -m pip install --upgrade pip
-python -m pip install --require-hashes -r requirements-windows.lock.txt
-Set-Location frontend
-npm ci
-Set-Location ..
-```
-
-If PowerShell blocks activation for the current terminal only:
-
-```powershell
-Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
-.\.venv\Scripts\Activate.ps1
-```
-
-## Configuration and demonstration credentials
-
-1. Copy `.env.example` to `.env`, or copy `.streamlit/secrets.toml.example` to `.streamlit/secrets.toml`.
-2. Keep `DB_NAME=sems_db` so Workbench and Streamlit access the same database.
-3. Use a dedicated `sems_app` MySQL account; do not run the application permanently as root.
-4. Generate a local bcrypt hash:
-
-   ```powershell
-   python scripts/generate_demo_hash.py
-   ```
-
-5. Place hashes in protected local configuration and map them to seeded USER emails such as `admin@sems.local`.
-
-Copy private values from an earlier local installation **manually** into fresh ignored configuration after extraction; never carry `.env`, `.streamlit/secrets.toml`, `frontend/.env.local` or real credentials into a commit. Create `sems_db` through the Workbench scripts above; build a *separate* `sems_test` only for integration tests using the guarded instructions below.
-
-Never commit `.env`, `.streamlit/secrets.toml`, plaintext passwords or actual credential hashes intended to remain private.
-
-## Run the professional application
-
-Start the API in terminal 1 from the project root:
-
-```powershell
-.\.venv\Scripts\Activate.ps1
-python -m uvicorn api.main:app --host 127.0.0.1 --port 8000 --reload
-```
-
-Start Next.js in terminal 2:
-
-```powershell
-Set-Location frontend
-npm run dev
-```
-
-Open `http://127.0.0.1:3000`. The browser receives only the non-sensitive API address from `NEXT_PUBLIC_SEMS_API_URL`; database credentials remain in the Python process.
-
-The preserved fallback remains available until final parity approval:
-
-```powershell
-streamlit run app.py
-```
-
-Both interfaces use the same service/repository stack and `sems_db`. Workbench does not need to remain open.
-
-## Tests
-
-Canonical Windows acceptance after local configuration:
-
-```powershell
-.\scripts\final_acceptance.ps1
-```
-
-This non-destructive orchestrator checks structure/runtimes, Python and SQL contracts, live `sems_db`, the dedicated `_test` guard, full pytest/API checks, frontend type-check/lint/Vitest/production build and secret hygiene. It does not rebuild or reseed `sems_db`.
-
-Server-independent validation during development:
-
-```powershell
-python scripts/validate_project.py
-```
-
-Local readiness/DB health before a demonstration:
-
-```powershell
-python scripts/preflight_check.py
-python scripts/validate_project.py --local-acceptance
-```
-
-Server-independent tests:
-
-```powershell
-pytest -m "not integration"
-```
-
-Full suite with a separately built test database:
-
-```powershell
-$env:DB_PASSWORD = "YOUR_LOCAL_TEST_ADMIN_PASSWORD"
-python scripts/build_database.py --database sems_test --user root
-$env:SEMS_TEST_DATABASE_URL = "mysql+pymysql://root:YOUR_URL_ENCODED_PASSWORD@127.0.0.1:3306/sems_test?charset=utf8mb4"
-pytest
-```
-
-Never point integration tests at valued production/demo data. The test fixture rejects database names that do not end in `_test`.
-
-## Recorded v2 validation status (2026-08-24)
-
-- Current static SQL/academic contract: passed for nine SQL/support scripts, three original demos, 13 ETCS302 SQL demos, optional NoSQL evidence, 13 production relations and seven views.
-- Current Python compile and AST parse: PASS.
-- Current server-independent Python/API suite: **131 passed, 20 MySQL-only cases deselected**, 0 failed.
-- Current broad sandbox pytest run: **131 passed, 20 skipped**, 0 failed; the skipped cases require a safely configured MySQL `_test` database.
-- Dedicated API suite: **17 passed**; focused data-policy/service/API security suite: **30 passed**.
-- Frontend: strict TypeScript PASS; ESLint PASS with zero warnings; Vitest **10 passed**; optimized Next.js production build PASS for 14 routes; production-server startup PASS.
-- Secret hygiene and API-layer boundary scans: PASS.
-- Verified v2 source archive: ZIP readability and SHA-256 PASS; an extracted-copy test/build passed in the recorded v2 package validation.
-- Python dependency consistency: PASS in the recorded August v2 validation. The original package's later npm audit failed, which prompted the separate patched candidate below.
-- Actual MySQL 8.4.11/Workbench execution: **not performed in this environment** because no MySQL server/client is installed.
-- Browser-rendered/human visual acceptance and screenshots: not fabricated; this sandbox has no browser executable, so complete them after genuine local execution.
-
-The historical local **118 passed / 0 failed** and MySQL 8.4.11 evidence predates this modernization and remains reference evidence only. A fresh Windows/MySQL run of `final_acceptance.ps1` is required before declaring final academic release.
-
-These are the v2 package's recorded validation results, **not a new Windows/MySQL run in this publication environment**. See [project state](docs/PROJECT_STATE.md) and [validation report](docs/VALIDATION_REPORT.md) for the checkpoint. Before final declaration, run the acceptance command again from a clean extraction on the intended machine.
-
-## Patched-candidate checks (2026-10-04)
-
-| Check | Fresh result here | Limit |
+| Role | Permitted emphasis | Boundary |
 |---|---|---|
-| SQL contract and ETCS302 demonstrations | 13 relations, seven views, 13 SQL scripts | Static source check, not live MySQL |
-| Python/API | 131 passed, 20 MySQL cases deselected; API 17 passed; focused security 30 passed | No `sems_test` server here |
-| Python dependency and secret checks | `pip check` PASS; scanner PASS | No live private configuration |
-| Frontend | TypeScript PASS; ESLint zero warnings; Vitest 10 passed; official Webpack build PASS, 14 generated pages | Browser/role visual proof pending |
-| npm runtime audit | Zero findings | Registry snapshot at audit time |
-| Full npm audit | Five high affected development packages, all in one unfixed `braces` advisory chain | Explicit, narrow CI exception; revisit when patched |
-| Original v2 archive | SHA-256 and ZIP integrity PASS, unchanged | Historical source; do not present it as the patched release |
+| Administrator | Global masters, requests, transfer approval, disposal and reports | Full laboratory and financial scope |
+| Faculty | Own-lab requests/review and related movement monitoring | No financial fields or transfer execution |
+| Lab Assistant | Own-lab inventory/storage, planning, dispatch, receipt and returns | Own-lab cost allowed; no disposal/transfer approval |
+| Student | Catalogue/availability and own request submission/progress | No cost, coordinates, reserved/accounted quantities or transfer authority |
 
-The default Turbopack build attempted here could not bind its CSS worker process in this sandbox. The supported Next.js `--webpack` build completed successfully and is the committed production-build command. The Windows/MySQL/Workbench acceptance and genuine browser screenshots remain pending.
+UI navigation improves usability; server authorization independently validates active identity, role and laboratory. Hiding a link is not the security boundary.
 
-## Verify the original v2 release archive
+## Reporting
 
-The archival asset `SEMS_Final_Academic_Professional_Release_v2.zip` must hash to:
+| View | Grain and useful result |
+|---|---|
+| `v_inventory_detail` | One position; joined location, free/reserved stock and values |
+| `v_component_stock_summary` | One lab/component; usable stock consolidated |
+| `v_low_stock_components` | One low-stock lab/component; threshold and shortage |
+| `v_request_progress` | One request; requested/approved totals and line progress |
+| `v_transfer_detail` | One movement allocation; dispatch/receipt/return context |
+| `v_overdue_returns` | One eligible overdue temporary item |
+| `v_disposal_summary` | One disposal event; current-cost valuation |
 
-```text
-bf7c69e72a03ee50296ea1cdaa45764317b93676712866c38885fb47ebff60b0
-```
+The Reports metric totals a named quantity, not numeric IDs, across at most 2,000 returned scoped rows. Disposal values use the current inventory cost rather than an event-time cost snapshot.
 
-The original ZIP is retained privately for provenance. The patched MatCount candidate has its **own** archive and checksum; never represent changed bytes with the original digest. To verify the original local archive and companion checksum in PowerShell:
+## Screenshot gallery
+
+| Sign-in | Position-level inventory |
+|---|---|
+| ![SEMS sign-in](docs/screenshots/faculty-2026-10-10/login.png) | ![Administrator inventory](docs/screenshots/faculty-2026-10-10/inventory.png) |
+
+These are synthetic demonstration records. No credentials, environment files, SQL backups or full screenshot archive are published here. Original names, hashes and report figure numbers are in the [mapping](docs/screenshots/faculty-2026-10-10/README.md).
+
+## Local startup
+
+### Existing configured installation
+
+From the project root, keep two PowerShell windows open:
 
 ```powershell
-(Get-FileHash .\SEMS_Final_Academic_Professional_Release_v2.zip -Algorithm SHA256).Hash.ToLower()
-Get-Content .\SEMS_Final_Academic_Professional_Release_v2.zip.sha256
+# Window 1: FastAPI
+.\.venv\Scripts\python.exe -m uvicorn api.main:app --host 127.0.0.1 --port 8000
 ```
 
-On Linux/macOS, run `sha256sum SEMS_Final_Academic_Professional_Release_v2.zip` and compare the digest to both the manifest and the value above. Stop if any value differs. See [release/README.md](release/README.md) for the new candidate asset and post-download verification procedure.
-
-## Repository map
-
-```text
-frontend/               Canonical Next.js/React/TypeScript/Tailwind interface
-api/                    Thin FastAPI authentication and HTTP adapters
-app.py, pages/, ui/      Preserved Streamlit fallback
-services/               RBAC, validation, workflow and transactions
-repositories/           Persistence/query-only layer
-db/                     SQLAlchemy models, engine, sessions and healthcheck
-config/                 Settings, constants and logging
-sql/                    Workbench build, verification and guarded reset scripts
-academic_demo/          Safety-labelled ETCS302 SQL and optional NoSQL teaching evidence
-tests/                  Unit, contract, architecture and MySQL integration tests
-scripts/                Build, static checks, secret scan and final acceptance
-docs/                   Frozen baseline and implementation documentation
-.github/workflows/       Server-independent CI and publication-integrity checks
-release/                 Original archive checksum and verification instructions
+```powershell
+# Window 2: frontend
+Set-Location -LiteralPath .\frontend
+npm run dev -- --hostname 127.0.0.1 --port 3000
 ```
 
-## Safety boundaries
+Check `http://127.0.0.1:8000/api/health`, then open `http://127.0.0.1:3000`. MySQL must already be running and private local configuration must identify `sems_db`. Do not rerun schema creation, reseeding or dependency restore for an ordinary restart. Use saved local application credentials; no passwords are included in repository documentation.
 
-- Exactly 13 frozen relations; no `password_hash`, `destination_inventory_id`, `lab_status` or audit table.
-- Approval transfers Q from available to reserved.
-- Pre-dispatch cancellation releases Q.
-- Dispatch reduces reserved only.
-- Receipt and return require an explicitly selected destination inventory/location.
-- Lifecycle records are preserved through states rather than casual deletion.
+Stop each server with Ctrl+C, answer Y if prompted and wait for the PowerShell prompt. Save useful Workbench query tabs and resolve any open transaction before closing clients. This does not delete MySQL data.
 
-## Academic DBMS concepts demonstrated
+### New machine or new source checkout
 
-DDL/DML/DCL/TCL, candidate/primary/foreign keys, composite keys, UNIQUE/NOT NULL/DEFAULT/CHECK, AUTO_INCREMENT, normalized multivalued and associative relations, relational algebra/set operations, joins/subqueries/aggregates/CTEs/window functions, seven views, justified indexes with EXPLAIN/EXPLAIN ANALYZE, procedures/functions, triggers, a cursor, savepoints, concurrency/deadlock/recovery, application RBAC and an optional NoSQL/CAP extension. See `docs/ETCS302_SYLLABUS_TRACEABILITY_MATRIX.md` and `docs/DBMS_ACADEMIC_COVERAGE_REPORT.md`.
+Follow [OFFLINE_SETUP_WINDOWS.md](OFFLINE_SETUP_WINDOWS.md) for the complete ordered process, private configuration and database build. Keep live integration tests in a dedicated database ending `_test`. Never point test setup or reset exercises at valued demonstration data. The immutable RC2 distribution needs the documented compatibility/dependency corrections for a fresh reviewed source build; it is not silently replaced by this revision.
 
-## Screenshot placeholders
+## Validation boundaries
 
-No evidence image is bundled or fabricated. After genuine local acceptance, capture the numbered evidence in `docs/SCREENSHOT_EVIDENCE_PLAN.md` (MySQL version/schema, constraints/JOIN/view, acceptance output, professional login/dashboard/workflows and Next.js → FastAPI → MySQL persistence proof in Workbench).
+- **Historical RC2 CI:** two supplied JSON records, 17 successful server-independent gates each; live MySQL integration excluded.
+- **Target Windows laptop:** SETUP-07 listeners; SETUP-08 healthy MySQL 8.4.11; SS-11 all listed local acceptance gates PASS; four-role captures and request-6 persistence.
+- **11 October isolated source review:** 151 Python tests including MySQL integration, 10 frontend tests, type/lint/tooling/build and unchanged audit policy passed.
+- **Remaining warning:** Starlette/httpx deprecation warning. Runtime npm findings are zero; the exact reviewed development-only `braces` advisory affects five tooling packages and remains gated. No new advisory is accepted.
+- **Boundary:** the missing private installed-folder ZIP prevents full byte reconciliation of all laptop files. This is not final institutional acceptance or a general security certification.
 
-The [screenshot intake](docs/screenshots/README.md) keeps every slot explicitly pending. Only genuine, sanitized command-prompt, Workbench and browser screenshots may be submitted; never show passwords, tokens, hashes, private configuration, desktop notifications or unrelated personal data.
+## Academic project and team
 
-## Faculty demonstration path
+| Student (ascending PRN) | PRN |
+|---|---:|
+| Aaryan Sachin Anand | 1022411049 |
+| Deven Sachin Gaikwad | 1022411052 |
 
-In Workbench confirm `SELECT VERSION()` and `SELECT DATABASE()`, count the 13 base relations and seven views, inspect an actual PK/FK and execute `sql/07_verification_queries.sql`. Run one meaningful JOIN, then a documented safe constraint/rollback demonstration in the isolated academic schema. Start FastAPI and Next.js, sign in with configured demonstration roles, perform an authorized inventory/request/transfer action and prove its persisted result with a Workbench `SELECT` on the same `sems_db`. Finish with the actual `final_acceptance.ps1` summary. Follow the exact [faculty guide](docs/FACULTY_DEMO_GUIDE.md); screenshots stay pending until captured.
+Guide: **Dr. Rupali Chopade** · Head of School: **Dr. Prachi Joshi**. Academic context is attribution, not institutional endorsement. Repository ownership/collaboration details remain in [AUTHORS.md](AUTHORS.md) and [CONTRIBUTORS.md](CONTRIBUTORS.md).
 
-## Security, accessibility and reuse
+## Roadmap
 
-Student financial-data restrictions and CSV minimization are enforced in Python service/API responses, not only by hiding fields in React. Sessions, active-user checks, role and lab scope remain server-side; demonstrations must use synthetic data and private configuration. Report suspected vulnerabilities privately using [SECURITY.md](SECURITY.md), never in a public issue. Dialog and keyboard handling follow [WAI-ARIA modal-dialog guidance](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/) and [WCAG 2.2 focus-visible guidance](https://www.w3.org/WAI/WCAG22/Understanding/focus-visible/); this is not a claim of formal accessibility certification.
-
-No open-source licence has currently been granted. The source is published for academic review and demonstration. Reuse, redistribution, or derivative use requires permission from the project authors unless otherwise stated for third-party components.
-
-## Known limitations and future scope
-
-The frozen MVP does not persist destination inventory on TRANSFER_ITEM, stores demo hashes outside USER, has no LAB activation attribute, returns complete temporary lines, and cannot preserve historical disposal unit cost independently of current INVENTORY cost. See `docs/known_issues.md`.
-
-Future scope—not current MVP—includes procurement, maintenance, serialization, QR/barcodes, audit-log tables, notifications, AI/compatibility recommendations, IoT, predictive features and remote deployment.
-
-**Release status:** The source package is complete. Final academic-release status requires successful fresh execution on the intended Windows, MySQL 8.4.11, and MySQL Workbench environment, followed by role-workflow and genuine visual acceptance.
+1. Complete the guide-reviewed report, institutional signatures and authentic plagiarism report.
+2. Rehearse the short role/SQL/persistence demonstration.
+3. Execute optional tagged catalogue/stock additions only after live precheck, fresh backup and separate screenshot approvals.
+4. Evaluate a versioned physical 3NF migration, historical valuation and persistent authentication/audit storage.
+5. Consider procurement, serial assets and deployment only after a separately scoped design review.

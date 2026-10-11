@@ -190,17 +190,14 @@ CREATE TABLE transfer (
         FOREIGN KEY (request_id) REFERENCES component_request (request_id)
         ON UPDATE CASCADE ON DELETE RESTRICT,
     CONSTRAINT fk_transfer_source_lab
-        FOREIGN KEY (source_lab_id) REFERENCES lab (lab_id)
-        ON UPDATE CASCADE ON DELETE RESTRICT,
+        FOREIGN KEY (source_lab_id) REFERENCES lab (lab_id),
     CONSTRAINT fk_transfer_destination_lab
-        FOREIGN KEY (destination_lab_id) REFERENCES lab (lab_id)
-        ON UPDATE CASCADE ON DELETE RESTRICT,
+        FOREIGN KEY (destination_lab_id) REFERENCES lab (lab_id),
     CONSTRAINT fk_transfer_creator
         FOREIGN KEY (created_by) REFERENCES `user` (user_id)
         ON UPDATE CASCADE ON DELETE RESTRICT,
     CONSTRAINT fk_transfer_receiver
         FOREIGN KEY (received_by) REFERENCES `user` (user_id)
-        ON UPDATE CASCADE ON DELETE RESTRICT
 ) ENGINE = InnoDB;
 
 CREATE TABLE transfer_item (
