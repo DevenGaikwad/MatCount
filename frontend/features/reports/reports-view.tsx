@@ -65,8 +65,19 @@ export function ReportsView() {
     const first = rows[0];
     return first ? Object.keys(first).map((key) => ({ key, label: humanize(key), numeric: typeof first[key] === "number" })) : [];
   }, [rows]);
-  const numericColumns = useMemo(() => columns.filter((column) => column.numeric).map((column) => column.key), [columns]);
-  const numericTotal = numericColumns.length ? rows.reduce((sum, row) => sum + Number(row[numericColumns[0]] ?? 0), 0) : 0;
+  // Identifiers are numeric fields, but summing them is not a useful report metric.
+  const summaryMeasure: Record<string, string> = {
+    v_inventory_detail: "quantity_available",
+    v_component_stock_summary: "quantity_available",
+    v_low_stock_components: "shortage_quantity",
+    v_request_progress: "total_approved",
+    v_transfer_detail: "quantity_received",
+    v_overdue_returns: "quantity_received",
+    v_disposal_summary: "quantity_disposed",
+  };
+  const summaryKey = summaryMeasure[selected];
+  const hasSummary = Boolean(summaryKey) && rows.some((row) => summaryKey in row);
+  const numericTotal = hasSummary ? rows.reduce((sum, row) => sum + Number(row[summaryKey] ?? 0), 0) : 0;
   const chart = selected === "v_disposal_summary" && !rows.some((row) => "disposed_value" in row)
     ? { label: "component_name", first: "quantity_disposed", firstLabel: "Disposed quantity" }
     : charts[selected];
@@ -97,7 +108,7 @@ export function ReportsView() {
       <MetricCard label="Displayed records" value={String(rows.length)} support="Maximum 2,000 scoped rows" icon="reports" />
       <MetricCard label="Report grain" value={metadata[selected]?.grain ?? "Documented SQL view"} support="Aggregation-safe interpretation" icon="database" />
       <MetricCard label="Data fields" value={String(columns.length)} support="Returned by the authoritative view" icon="component" />
-      <MetricCard label={numericColumns.length ? `Total ${humanize(numericColumns[0])}` : "Numeric summary"} value={numericColumns.length ? formatValue(numericColumns[0], numericTotal) : "Not applicable"} support="First numeric measure in this view" icon="inventory" />
+      <MetricCard label={hasSummary ? `Total ${humanize(summaryKey)}` : "Quantity summary"} value={hasSummary ? formatValue(summaryKey, numericTotal) : "Not applicable"} support="Total across returned scoped rows" icon="inventory" />
     </div>
     <div className="panel-grid">
       <Panel>

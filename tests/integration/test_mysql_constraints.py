@@ -55,7 +55,9 @@ def test_distinct_transfer_labs_check(mysql_connection: Connection) -> None:
     user_id, lab_id = mysql_connection.execute(
         text("SELECT user_id, lab_id FROM `user` ORDER BY user_id LIMIT 1")
     ).one()
-    with pytest.raises(IntegrityError):
+    # MySQL error 3819 is surfaced by PyMySQL as OperationalError.
+    # Verify the exact CHECK rejection instead of accepting an unrelated failure.
+    with pytest.raises(DBAPIError) as rejected:
         mysql_connection.execute(
             text(
                 "INSERT INTO transfer "
@@ -64,6 +66,9 @@ def test_distinct_transfer_labs_check(mysql_connection: Connection) -> None:
             ),
             {"request_id": request_id, "lab_id": lab_id, "user_id": user_id},
         )
+
+    assert rejected.value.orig.args[0] == 3819
+    assert "ck_transfer_distinct_labs" in str(rejected.value.orig)
 
 
 def test_same_lab_inventory_location_trigger(mysql_connection: Connection) -> None:

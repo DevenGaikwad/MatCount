@@ -1,3 +1,5 @@
+> **11 October 2026 update:** The supplied laptop evidence now shows all listed local acceptance gates PASS. See [current faculty/source review](FACULTY_PROGRESS_REVIEW_2026-10-11.md) and [formal normalization analysis](NORMALIZATION_PROOF.md). The state below records the RC2 freeze; its remaining-local-acceptance statements are historical. Published RC2 artifacts remain unchanged.
+
 # SEMS Project State
 
 **Last updated:** 2026-08-24  
