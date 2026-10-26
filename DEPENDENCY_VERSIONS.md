@@ -1,6 +1,6 @@
-# RC2 dependency versions
+# Reviewed source dependency versions
 
-The archive records its exact source in `SOURCE_COMMIT.txt`. Python direct requirements are exact pins. Windows x64/CPython 3.12 and Linux x86_64/CPython 3.12 have complete wheel hashes in their respective lockfiles. Frontend direct pins and the complete npm lock freeze the validated graph.
+Current source includes the [26 October security remediation](docs/SECURITY_REMEDIATION_2026-10-26.md). The historical RC2 archive records its own exact source in `SOURCE_COMMIT.txt` and is unchanged. Python direct requirements are exact pins. Windows x64/CPython 3.12 and Linux x86_64/CPython 3.12 have complete wheel hashes in their respective lockfiles. Frontend direct pins and the complete npm lock freeze the validated graph.
 
 ## Runtimes
 
@@ -12,7 +12,9 @@ The archive records its exact source in `SOURCE_COMMIT.txt`. Python direct requi
 
 | Package | Pinned version |
 |---|---|
-| streamlit | 1.65.0 |
+| streamlit | 1.66.1 |
+| pillow | 13.0.0 |
+| certifi | 2026.10.19 |
 | SQLAlchemy | 2.0.54 |
 | PyMySQL | 1.2.3 |
 | pandas | 2.3.3 |
@@ -28,7 +30,7 @@ The archive records its exact source in `SOURCE_COMMIT.txt`. Python direct requi
 
 | Package | Pinned version |
 |---|---|
-| next | 16.3.8 |
+| next | 16.4.3 |
 | react | 19.3.0 |
 | react-dom | 19.3.0 |
 | @eslint/compat | 2.1.1 |
@@ -37,20 +39,22 @@ The archive records its exact source in `SOURCE_COMMIT.txt`. Python direct requi
 | @types/react | 19.3.0 |
 | @types/react-dom | 19.3.0 |
 | eslint | 10.11.0 |
-| eslint-config-next | 16.3.8 |
+| eslint-config-next | 16.4.3 |
 | tailwindcss | 4.3.3 |
 | typescript | 6.0.3 |
 | vitest | 5.0.3 |
 | sharp (transitive runtime) | 0.35.5 |
+| vite (transitive development) | 8.3.5 |
+| zod (transitive development) | 4.6.7 |
 
 ## Selection and remaining boundaries
 
-Next.js 16.3.8 is the stable security patch selected after official release/advisory review; sharp remains the stable 0.35.5. React and React DOM are both 19.3.0. Vitest 5.0.3 and TypeScript 6.0.3 passed the configured checks. The TS 7 update is excluded because typescript-eslint rejects it.
+Next.js and eslint-config-next 16.4.3 address the reviewed October security advisories; sharp remains the stable 0.35.5. React and React DOM are both 19.3.0. Vitest 5.0.3 and TypeScript 6.0.3 passed the configured checks. The TS 7 update is excluded because typescript-eslint rejects it.
 
 ESLint 10.11.0 runs the existing Next/React/accessibility rules through the officially maintained `@eslint/compat` 2.1.1 adapter. All 113 existing configured rules retain their severity, and negative probes detect react/display-name, jsx-a11y/alt-text and @next/next/no-img-element. Native peer-range warnings from legacy React/import/accessibility plugins remain visible; this is adapter-based compatibility, not a claim of native plugin ESLint 10 support. No lint rule or gate was disabled.
 
 SQLAlchemy remains on supported 2.0 maintenance (2.0.54); the 2.1 migration is deferred pending live MySQL acceptance. PyMySQL is frozen at 1.2.3 to retain the upstream 1.2.1 security fix, which must not be discarded by downgrading. pandas remains 2.3.3 until report/CSV/fallback migration acceptance for pandas 3.
 
-The npm audit policy remains unchanged: zero runtime findings; only the exact development-only GHSA-vfj7-8cjw-p6xm chain can be excepted. The intended host must repeat audits. Locks make installation reproducible within the stated architecture/runtime targets; they do not make the bundle fully air-gapped or prove live MySQL/Windows/role acceptance.
+The 26 October source audit has zero findings in both runtime and complete graphs. The npm audit policy remains unchanged: zero runtime findings; only the exact development-only GHSA-vfj7-8cjw-p6xm chain can be excepted. The intended host must repeat audits. Locks make installation reproducible within the stated architecture/runtime targets; they do not make the bundle fully air-gapped or prove live MySQL/Windows/role acceptance.
 
 The new post-interruption PR #22 consistently updated the direct pytest pin and both hashed locks to 9.0.3. Its official stable release fixes CVE-2025-71176 and supports Python 3.12. The existing Linux and Windows gates passed on its exact head; the final package repeats its extracted-source gates. No application, schema or test assertion changed in this update.

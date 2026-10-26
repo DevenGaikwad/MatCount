@@ -1,0 +1,566 @@
+{
+  "repository": "DevenGaikwad/MatCount",
+  "captured_on": "2026-10-26",
+  "state_at_capture": "open",
+  "total_alerts": 93,
+  "inventory": [
+    {
+      "number": 5,
+      "title": "launch-editor: escapeCmdArgs() omits % escaping on Windows",
+      "url": "https://github.com/DevenGaikwad/MatCount/security/dependabot/5",
+      "affected_package": "vite"
+    },
+    {
+      "number": 6,
+      "title": "launch-editor: Editor CLI flag misinterpretation causing arbitrary command execution for some editors",
+      "url": "https://github.com/DevenGaikwad/MatCount/security/dependabot/6",
+      "affected_package": "vite"
+    },
+    {
+      "number": 7,
+      "title": "launch-editor: `fs.existsSync()` existence check can be bypassed on Windows",
+      "url": "https://github.com/DevenGaikwad/MatCount/security/dependabot/7",
+      "affected_package": "vite"
+    },
+    {
+      "number": 8,
+      "title": "Pillow: Out-of-bounds access in _imagingmorph on a zero-width image",
+      "url": "https://github.com/DevenGaikwad/MatCount/security/dependabot/8",
+      "affected_package": "pillow"
+    },
+    {
+      "number": 9,
+      "title": "Pillow: Out-of-bounds access in _imagingmorph on a zero-width image",
+      "url": "https://github.com/DevenGaikwad/MatCount/security/dependabot/9",
+      "affected_package": "pillow"
+    },
+    {
+      "number": 10,
+      "title": "Pillow: Heap buffer overflow in ImagingJpegDecode",
+      "url": "https://github.com/DevenGaikwad/MatCount/security/dependabot/10",
+      "affected_package": "pillow"
+    },
+    {
+      "number": 11,
+      "title": "Pillow: Heap buffer overflow in ImagingJpegDecode",
+      "url": "https://github.com/DevenGaikwad/MatCount/security/dependabot/11",
+      "affected_package": "pillow"
+    },
+    {
+      "number": 12,
+      "title": "Pillow: TIFF encoder ColorMap plane-size mismatch causes a heap out-of-bounds read",
+      "url": "https://github.com/DevenGaikwad/MatCount/security/dependabot/12",
+      "affected_package": "pillow"
+    },
+    {
+      "number": 13,
+      "title": "Pillow: TIFF encoder ColorMap plane-size mismatch causes a heap out-of-bounds read",
+      "url": "https://github.com/DevenGaikwad/MatCount/security/dependabot/13",
+      "affected_package": "pillow"
+    },
+    {
+      "number": 14,
+      "title": "Pillow: GIF seek keeps rejected size after DecompressionBombError, allowing DoS",
+      "url": "https://github.com/DevenGaikwad/MatCount/security/dependabot/14",
+      "affected_package": "pillow"
+    },
+    {
+      "number": 15,
+      "title": "Pillow: GIF seek keeps rejected size after DecompressionBombError, allowing DoS",
+      "url": "https://github.com/DevenGaikwad/MatCount/security/dependabot/15",
+      "affected_package": "pillow"
+    },
+    {
+      "number": 16,
+      "title": "Pillow tiled-TIFF decoder reads past tile buffer in copy4 (Unpack.c:1290)",
+      "url": "https://github.com/DevenGaikwad/MatCount/security/dependabot/16",
+      "affected_package": "pillow"
+    },
+    {
+      "number": 17,
+      "title": "Pillow tiled-TIFF decoder reads past tile buffer in copy4 (Unpack.c:1290)",
+      "url": "https://github.com/DevenGaikwad/MatCount/security/dependabot/17",
+      "affected_package": "pillow"
+    },
+    {
+      "number": 18,
+      "title": "Pillow: OOB read in TiffDecode.c tile and RGBA paths leaks heap memory into pixels",
+      "url": "https://github.com/DevenGaikwad/MatCount/security/dependabot/18",
+      "affected_package": "pillow"
+    },
+    {
+      "number": 19,
+      "title": "Pillow: OOB read in TiffDecode.c tile and RGBA paths leaks heap memory into pixels",
+      "url": "https://github.com/DevenGaikwad/MatCount/security/dependabot/19",
+      "affected_package": "pillow"
+    },
+    {
+      "number": 20,
+      "title": "Pillow: TiffDecode returns uninitialized memory as pixels for short JPEG strips",
+      "url": "https://github.com/DevenGaikwad/MatCount/security/dependabot/20",
+      "affected_package": "pillow"
+    },
+    {
+      "number": 21,
+      "title": "Pillow: TiffDecode returns uninitialized memory as pixels for short JPEG strips",
+      "url": "https://github.com/DevenGaikwad/MatCount/security/dependabot/21",
+      "affected_package": "pillow"
+    },
+    {
+      "number": 22,
+      "title": "Pillow: Unbounded recursion parsing a PDF page tree or trailer chain (incomplete fix for CVE-2026-42310)",
+      "url": "https://github.com/DevenGaikwad/MatCount/security/dependabot/22",
+      "affected_package": "pillow"
+    },
+    {
+      "number": 23,
+      "title": "Pillow: Unbounded recursion parsing a PDF page tree or trailer chain (incomplete fix for CVE-2026-42310)",
+      "url": "https://github.com/DevenGaikwad/MatCount/security/dependabot/23",
+      "affected_package": "pillow"
+    },
+    {
+      "number": 24,
+      "title": "Pillow: EPS load(scale) lets Ghostscript render past the decompression bomb limit",
+      "url": "https://github.com/DevenGaikwad/MatCount/security/dependabot/24",
+      "affected_package": "pillow"
+    },
+    {
+      "number": 25,
+      "title": "Pillow: EPS load(scale) lets Ghostscript render past the decompression bomb limit",
+      "url": "https://github.com/DevenGaikwad/MatCount/security/dependabot/25",
+      "affected_package": "pillow"
+    },
+    {
+      "number": 26,
+      "title": "Vite: First 4 bytes of files outside of `server.fs` setting is exposed by `?vite-wasm-instance`",
+      "url": "https://github.com/DevenGaikwad/MatCount/security/dependabot/26",
+      "affected_package": "vite"
+    },
+    {
+      "number": 27,
+      "title": "Vite: Files outside `server.fs.allow` could be served when project paths match system paths on non-Windows machine",
+      "url": "https://github.com/DevenGaikwad/MatCount/security/dependabot/27",
+      "affected_package": "vite"
+    },
+    {
+      "number": 28,
+      "title": "Vite: Cross origin script execution through Vite custom middleware",
+      "url": "https://github.com/DevenGaikwad/MatCount/security/dependabot/28",
+      "affected_package": "vite"
+    },
+    {
+      "number": 29,
+      "title": "Next.js: Denial of Service in App Router using Server Actions",
+      "url": "https://github.com/DevenGaikwad/MatCount/security/dependabot/29",
+      "affected_package": "next"
+    },
+    {
+      "number": 30,
+      "title": "Next.js: Unauthenticated Remote Code Execution in Image Optimization API when SVG files are used",
+      "url": "https://github.com/DevenGaikwad/MatCount/security/dependabot/30",
+      "affected_package": "next"
+    },
+    {
+      "number": 31,
+      "title": "Next.js: Unauthenticated Remote Code Execution in `use cache` functions returning typed arrays",
+      "url": "https://github.com/DevenGaikwad/MatCount/security/dependabot/31",
+      "affected_package": "next"
+    },
+    {
+      "number": 33,
+      "title": "certifi bundles emSign root CAs with compromised intermediate CA keys",
+      "url": "https://github.com/DevenGaikwad/MatCount/security/dependabot/33",
+      "affected_package": "certifi"
+    },
+    {
+      "number": 34,
+      "title": "Pillow: Argument Injection in Ghostscript call, potentially leading into RCE",
+      "url": "https://github.com/DevenGaikwad/MatCount/security/dependabot/34",
+      "affected_package": "pillow"
+    },
+    {
+      "number": 35,
+      "title": "Pillow: P;2L and P;4L decoders may read 1 to 3 bytes past the passed buffer size",
+      "url": "https://github.com/DevenGaikwad/MatCount/security/dependabot/35",
+      "affected_package": "pillow"
+    },
+    {
+      "number": 36,
+      "title": "Pillow: Double free in ImagingScaleAffine on calloc failure via Image.transform",
+      "url": "https://github.com/DevenGaikwad/MatCount/security/dependabot/36",
+      "affected_package": "pillow"
+    },
+    {
+      "number": 37,
+      "title": "Pillow: Invalid free in FreeType glyph rendering when a stroker is active",
+      "url": "https://github.com/DevenGaikwad/MatCount/security/dependabot/37",
+      "affected_package": "pillow"
+    },
+    {
+      "number": 38,
+      "title": "Pillow: NULL pointer dereference in Image.merge via an unvalidated band 0",
+      "url": "https://github.com/DevenGaikwad/MatCount/security/dependabot/38",
+      "affected_package": "pillow"
+    },
+    {
+      "number": 39,
+      "title": "Pillow: NULL dereference in ImagingExpand via rank filters on zero-size images",
+      "url": "https://github.com/DevenGaikwad/MatCount/security/dependabot/39",
+      "affected_package": "pillow"
+    },
+    {
+      "number": 40,
+      "title": "Pillow: Quadratic GIF comment copying during save",
+      "url": "https://github.com/DevenGaikwad/MatCount/security/dependabot/40",
+      "affected_package": "pillow"
+    },
+    {
+      "number": 41,
+      "title": "Pillow: Infinite loop in MIC n_frames when the embedded TIFF",
+      "url": "https://github.com/DevenGaikwad/MatCount/security/dependabot/41",
+      "affected_package": "pillow"
+    },
+    {
+      "number": 42,
+      "title": "Pillow: Quadratic GIF comment concatenation allows DoS in Image.open()",
+      "url": "https://github.com/DevenGaikwad/MatCount/security/dependabot/42",
+      "affected_package": "pillow"
+    },
+    {
+      "number": 43,
+      "title": "Pillow: Image.quantize() with empty palette leaks uninitialized stack memory",
+      "url": "https://github.com/DevenGaikwad/MatCount/security/dependabot/43",
+      "affected_package": "pillow"
+    },
+    {
+      "number": 44,
+      "title": "Pillow: ReDoS in XbmImagePlugin: 512-byte file stalls Image.open() for minutes",
+      "url": "https://github.com/DevenGaikwad/MatCount/security/dependabot/44",
+      "affected_package": "pillow"
+    },
+    {
+      "number": 45,
+      "title": "Pillow: PdfParser can recurse without limit in get_value() and linearize_page_tree()",
+      "url": "https://github.com/DevenGaikwad/MatCount/security/dependabot/45",
+      "affected_package": "pillow"
+    },
+    {
+      "number": 46,
+      "title": "Pillow: Quadratic-time DoS in PDF save_all (PdfParser.next_object_id)",
+      "url": "https://github.com/DevenGaikwad/MatCount/security/dependabot/46",
+      "affected_package": "pillow"
+    },
+    {
+      "number": 47,
+      "title": "Pillow: MSP RLE decoder expands a tiny file into unbounded memory",
+      "url": "https://github.com/DevenGaikwad/MatCount/security/dependabot/47",
+      "affected_package": "pillow"
+    },
+    {
+      "number": 48,
+      "title": "Pillow: APNG background disposal allocates full canvas before decompression bomb check",
+      "url": "https://github.com/DevenGaikwad/MatCount/security/dependabot/48",
+      "affected_package": "pillow"
+    },
+    {
+      "number": 49,
+      "title": "Pillow: Infinite loop in PdfParser.rewrite_pages on page tree Parent cycle",
+      "url": "https://github.com/DevenGaikwad/MatCount/security/dependabot/49",
+      "affected_package": "pillow"
+    },
+    {
+      "number": 50,
+      "title": "Pillow: Heap use-after-free when encoding TIFF to an in-memory buffer",
+      "url": "https://github.com/DevenGaikwad/MatCount/security/dependabot/50",
+      "affected_package": "pillow"
+    },
+    {
+      "number": 51,
+      "title": "Pillow: Heap buffer overflow in _tiffWriteProc when saving TIFF to BytesIO",
+      "url": "https://github.com/DevenGaikwad/MatCount/security/dependabot/51",
+      "affected_package": "pillow"
+    },
+    {
+      "number": 52,
+      "title": "Pillow: Memory disclosure and segfault in libtiff encoder via crafted TIFF tags",
+      "url": "https://github.com/DevenGaikwad/MatCount/security/dependabot/52",
+      "affected_package": "pillow"
+    },
+    {
+      "number": 53,
+      "title": "Pillow: Decompression-bomb protection bypass via multi-frame seek() in MPO and DCX (MpoImageFile.seek / DcxImageFile.seek)",
+      "url": "https://github.com/DevenGaikwad/MatCount/security/dependabot/53",
+      "affected_package": "pillow"
+    },
+    {
+      "number": 54,
+      "title": "Pillow: Decompression bomb check bypass in SpiderImagePlugin.seek() leads to unbounded allocation DoS",
+      "url": "https://github.com/DevenGaikwad/MatCount/security/dependabot/54",
+      "affected_package": "pillow"
+    },
+    {
+      "number": 55,
+      "title": "Pillow: BMP RLE decoder memory-amplification DoS via unbounded delta escape / absolute mode",
+      "url": "https://github.com/DevenGaikwad/MatCount/security/dependabot/55",
+      "affected_package": "pillow"
+    },
+    {
+      "number": 56,
+      "title": "Pillow multi-frame loaders can reuse stale native image storage after mode transitions",
+      "url": "https://github.com/DevenGaikwad/MatCount/security/dependabot/56",
+      "affected_package": "pillow"
+    },
+    {
+      "number": 57,
+      "title": "Pillow PDF append accepts malformed shared page-tree DAG causing resource exhaustion",
+      "url": "https://github.com/DevenGaikwad/MatCount/security/dependabot/57",
+      "affected_package": "pillow"
+    },
+    {
+      "number": 58,
+      "title": "Pillow: Reachable undefined behavior in native integer operations, potentially leading to denial of service or logic integrity compromise",
+      "url": "https://github.com/DevenGaikwad/MatCount/security/dependabot/58",
+      "affected_package": "pillow"
+    },
+    {
+      "number": 59,
+      "title": "Pillow: TarIO negative size field causes infinite CPU-spin loop",
+      "url": "https://github.com/DevenGaikwad/MatCount/security/dependabot/59",
+      "affected_package": "pillow"
+    },
+    {
+      "number": 60,
+      "title": "Pillow: PNG eXIf chunk makes EXIF parsing run in quadratic time",
+      "url": "https://github.com/DevenGaikwad/MatCount/security/dependabot/60",
+      "affected_package": "pillow"
+    },
+    {
+      "number": 61,
+      "title": "Pillow: Heap over-read in WMF/EMF rendering via 16-bit dimension truncation (Windows builds)",
+      "url": "https://github.com/DevenGaikwad/MatCount/security/dependabot/61",
+      "affected_package": "pillow"
+    },
+    {
+      "number": 62,
+      "title": "Pillow: Heap buffer overflow writing JPEG comment after ICC profile fills buffer",
+      "url": "https://github.com/DevenGaikwad/MatCount/security/dependabot/62",
+      "affected_package": "pillow"
+    },
+    {
+      "number": 63,
+      "title": "Pillow: Bundled libopenjp2 2.5.4 in all wheels since 11.1.0 carries OSV-2025-219 heap-buffer-overflow write reachable from Image.open().load()",
+      "url": "https://github.com/DevenGaikwad/MatCount/security/dependabot/63",
+      "affected_package": "pillow"
+    },
+    {
+      "number": 64,
+      "title": "Pillow: Arrow export leaks stale heap memory when PILLOW_ALIGNMENT > 1",
+      "url": "https://github.com/DevenGaikwad/MatCount/security/dependabot/64",
+      "affected_package": "pillow"
+    },
+    {
+      "number": 65,
+      "title": "Pillow: Heap buffer overflow in FlashPix (FPX) JPEG decoding leads to code execution",
+      "url": "https://github.com/DevenGaikwad/MatCount/security/dependabot/65",
+      "affected_package": "pillow"
+    },
+    {
+      "number": 66,
+      "title": "certifi bundles emSign root CAs with compromised intermediate CA keys",
+      "url": "https://github.com/DevenGaikwad/MatCount/security/dependabot/66",
+      "affected_package": "certifi"
+    },
+    {
+      "number": 67,
+      "title": "Pillow: Argument Injection in Ghostscript call, potentially leading into RCE",
+      "url": "https://github.com/DevenGaikwad/MatCount/security/dependabot/67",
+      "affected_package": "pillow"
+    },
+    {
+      "number": 68,
+      "title": "Pillow: P;2L and P;4L decoders may read 1 to 3 bytes past the passed buffer size",
+      "url": "https://github.com/DevenGaikwad/MatCount/security/dependabot/68",
+      "affected_package": "pillow"
+    },
+    {
+      "number": 69,
+      "title": "Pillow: Double free in ImagingScaleAffine on calloc failure via Image.transform",
+      "url": "https://github.com/DevenGaikwad/MatCount/security/dependabot/69",
+      "affected_package": "pillow"
+    },
+    {
+      "number": 70,
+      "title": "Pillow: Invalid free in FreeType glyph rendering when a stroker is active",
+      "url": "https://github.com/DevenGaikwad/MatCount/security/dependabot/70",
+      "affected_package": "pillow"
+    },
+    {
+      "number": 71,
+      "title": "Pillow: NULL pointer dereference in Image.merge via an unvalidated band 0",
+      "url": "https://github.com/DevenGaikwad/MatCount/security/dependabot/71",
+      "affected_package": "pillow"
+    },
+    {
+      "number": 72,
+      "title": "Pillow: NULL dereference in ImagingExpand via rank filters on zero-size images",
+      "url": "https://github.com/DevenGaikwad/MatCount/security/dependabot/72",
+      "affected_package": "pillow"
+    },
+    {
+      "number": 73,
+      "title": "Pillow: Quadratic GIF comment copying during save",
+      "url": "https://github.com/DevenGaikwad/MatCount/security/dependabot/73",
+      "affected_package": "pillow"
+    },
+    {
+      "number": 74,
+      "title": "Pillow: Infinite loop in MIC n_frames when the embedded TIFF",
+      "url": "https://github.com/DevenGaikwad/MatCount/security/dependabot/74",
+      "affected_package": "pillow"
+    },
+    {
+      "number": 75,
+      "title": "Pillow: Quadratic GIF comment concatenation allows DoS in Image.open()",
+      "url": "https://github.com/DevenGaikwad/MatCount/security/dependabot/75",
+      "affected_package": "pillow"
+    },
+    {
+      "number": 76,
+      "title": "Pillow: Image.quantize() with empty palette leaks uninitialized stack memory",
+      "url": "https://github.com/DevenGaikwad/MatCount/security/dependabot/76",
+      "affected_package": "pillow"
+    },
+    {
+      "number": 77,
+      "title": "Pillow: ReDoS in XbmImagePlugin: 512-byte file stalls Image.open() for minutes",
+      "url": "https://github.com/DevenGaikwad/MatCount/security/dependabot/77",
+      "affected_package": "pillow"
+    },
+    {
+      "number": 78,
+      "title": "Pillow: PdfParser can recurse without limit in get_value() and linearize_page_tree()",
+      "url": "https://github.com/DevenGaikwad/MatCount/security/dependabot/78",
+      "affected_package": "pillow"
+    },
+    {
+      "number": 79,
+      "title": "Pillow: Quadratic-time DoS in PDF save_all (PdfParser.next_object_id)",
+      "url": "https://github.com/DevenGaikwad/MatCount/security/dependabot/79",
+      "affected_package": "pillow"
+    },
+    {
+      "number": 80,
+      "title": "Pillow: MSP RLE decoder expands a tiny file into unbounded memory",
+      "url": "https://github.com/DevenGaikwad/MatCount/security/dependabot/80",
+      "affected_package": "pillow"
+    },
+    {
+      "number": 81,
+      "title": "Pillow: APNG background disposal allocates full canvas before decompression bomb check",
+      "url": "https://github.com/DevenGaikwad/MatCount/security/dependabot/81",
+      "affected_package": "pillow"
+    },
+    {
+      "number": 82,
+      "title": "Pillow: Infinite loop in PdfParser.rewrite_pages on page tree Parent cycle",
+      "url": "https://github.com/DevenGaikwad/MatCount/security/dependabot/82",
+      "affected_package": "pillow"
+    },
+    {
+      "number": 83,
+      "title": "Pillow: Heap use-after-free when encoding TIFF to an in-memory buffer",
+      "url": "https://github.com/DevenGaikwad/MatCount/security/dependabot/83",
+      "affected_package": "pillow"
+    },
+    {
+      "number": 84,
+      "title": "Pillow: Heap buffer overflow in _tiffWriteProc when saving TIFF to BytesIO",
+      "url": "https://github.com/DevenGaikwad/MatCount/security/dependabot/84",
+      "affected_package": "pillow"
+    },
+    {
+      "number": 85,
+      "title": "Pillow: Memory disclosure and segfault in libtiff encoder via crafted TIFF tags",
+      "url": "https://github.com/DevenGaikwad/MatCount/security/dependabot/85",
+      "affected_package": "pillow"
+    },
+    {
+      "number": 86,
+      "title": "Pillow: Decompression-bomb protection bypass via multi-frame seek() in MPO and DCX (MpoImageFile.seek / DcxImageFile.seek)",
+      "url": "https://github.com/DevenGaikwad/MatCount/security/dependabot/86",
+      "affected_package": "pillow"
+    },
+    {
+      "number": 87,
+      "title": "Pillow: Decompression bomb check bypass in SpiderImagePlugin.seek() leads to unbounded allocation DoS",
+      "url": "https://github.com/DevenGaikwad/MatCount/security/dependabot/87",
+      "affected_package": "pillow"
+    },
+    {
+      "number": 88,
+      "title": "Pillow: BMP RLE decoder memory-amplification DoS via unbounded delta escape / absolute mode",
+      "url": "https://github.com/DevenGaikwad/MatCount/security/dependabot/88",
+      "affected_package": "pillow"
+    },
+    {
+      "number": 89,
+      "title": "Pillow multi-frame loaders can reuse stale native image storage after mode transitions",
+      "url": "https://github.com/DevenGaikwad/MatCount/security/dependabot/89",
+      "affected_package": "pillow"
+    },
+    {
+      "number": 90,
+      "title": "Pillow PDF append accepts malformed shared page-tree DAG causing resource exhaustion",
+      "url": "https://github.com/DevenGaikwad/MatCount/security/dependabot/90",
+      "affected_package": "pillow"
+    },
+    {
+      "number": 91,
+      "title": "Pillow: Reachable undefined behavior in native integer operations, potentially leading to denial of service or logic integrity compromise",
+      "url": "https://github.com/DevenGaikwad/MatCount/security/dependabot/91",
+      "affected_package": "pillow"
+    },
+    {
+      "number": 92,
+      "title": "Pillow: TarIO negative size field causes infinite CPU-spin loop",
+      "url": "https://github.com/DevenGaikwad/MatCount/security/dependabot/92",
+      "affected_package": "pillow"
+    },
+    {
+      "number": 93,
+      "title": "Pillow: PNG eXIf chunk makes EXIF parsing run in quadratic time",
+      "url": "https://github.com/DevenGaikwad/MatCount/security/dependabot/93",
+      "affected_package": "pillow"
+    },
+    {
+      "number": 94,
+      "title": "Pillow: Heap over-read in WMF/EMF rendering via 16-bit dimension truncation (Windows builds)",
+      "url": "https://github.com/DevenGaikwad/MatCount/security/dependabot/94",
+      "affected_package": "pillow"
+    },
+    {
+      "number": 95,
+      "title": "Pillow: Heap buffer overflow writing JPEG comment after ICC profile fills buffer",
+      "url": "https://github.com/DevenGaikwad/MatCount/security/dependabot/95",
+      "affected_package": "pillow"
+    },
+    {
+      "number": 96,
+      "title": "Pillow: Bundled libopenjp2 2.5.4 in all wheels since 11.1.0 carries OSV-2025-219 heap-buffer-overflow write reachable from Image.open().load()",
+      "url": "https://github.com/DevenGaikwad/MatCount/security/dependabot/96",
+      "affected_package": "pillow"
+    },
+    {
+      "number": 97,
+      "title": "Pillow: Arrow export leaks stale heap memory when PILLOW_ALIGNMENT > 1",
+      "url": "https://github.com/DevenGaikwad/MatCount/security/dependabot/97",
+      "affected_package": "pillow"
+    },
+    {
+      "number": 98,
+      "title": "Pillow: Heap buffer overflow in FlashPix (FPX) JPEG decoding leads to code execution",
+      "url": "https://github.com/DevenGaikwad/MatCount/security/dependabot/98",
+      "affected_package": "pillow"
+    }
+  ]
+}
