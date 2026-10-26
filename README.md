@@ -12,11 +12,15 @@ Third Year B.Tech Electronics and Communication Engineering (AI & ML) · Divisio
 
 *Genuine 10 October 2026 capture; displayed totals are a dated demonstration state. Images are preserved byte-for-byte. MatCount is the repository/product name; SEMS is the established application and database naming convention.*
 
+### Completed academic project
+
+The repository owner confirmed completion of the faculty demonstration and academic project on **26 October 2026**. The code and genuine dated evidence are retained for portfolio/reference use. The [26 October dependency security maintenance](docs/SECURITY_REMEDIATION_2026-10-26.md) addresses the 93-alert Dependabot inventory with patched dependencies and renewed verification. This maintenance is separate from the historical RC2 package.
+
 ### Evidence and release status
 
 The supplied Windows evidence shows a healthy `sems_db`, four-role workflows, persisted faculty review and **all listed laptop acceptance gates PASS**. The independent 11 October review passed **151 Python tests including MySQL integration** and **10 frontend tests**, type checking, lint, tooling compatibility and production build. The npm gate reports zero runtime findings and the existing exact development-only exception. See [dated review and limits](docs/FACULTY_PROGRESS_REVIEW_2026-10-11.md).
 
-The published **v2.0.0-rc.2 archive/tag remains immutable**. This development revision includes the reviewed MySQL CHECK/FK build correction, CHECK regression correction, `source-map-js` 1.2.2 lock update and an explicit quantity-based Reports summary. Laptop evidence is from the privately corrected installation; it does not claim that an unchanged RC2 fresh build had no defect. Final institutional acceptance, certificate signatures and a genuine plagiarism result remain pending.
+The published **v2.0.0-rc.2 archive/tag remains immutable**. This development revision includes the reviewed MySQL CHECK/FK build correction, CHECK regression correction, `source-map-js` 1.2.2 lock update and an explicit quantity-based Reports summary. Laptop evidence is from the privately corrected installation; it does not claim that an unchanged RC2 fresh build had no defect. The evidence in this paragraph describes the 11 October review. Current owner-reported academic completion is recorded above; institutional signatures and plagiarism certification are not independently established by this code review.
 
 ## Navigation
 
@@ -63,7 +67,7 @@ Node.js and the browser do not connect directly to MySQL. Workbench is an indepe
 |---|---|
 | Database | MySQL Community Server 8.4.11, InnoDB, utf8mb4 |
 | Backend | Python 3.12, FastAPI, Uvicorn, SQLAlchemy 2.x, PyMySQL |
-| Browser interface | Next.js 16.3.8, React 19.3.0, TypeScript 6.0.3, Tailwind 4.3.3 |
+| Browser interface | Next.js 16.4.3, React 19.3.0, TypeScript 6.0.3, Tailwind 4.3.3 |
 | Toolchain | Node.js 24.19.0, npm 11.9.0; locked dependencies |
 | Authentication | bcrypt hashes in private local configuration; process-local opaque sessions |
 | Verification | pytest, API tests, isolated MySQL integration, Vitest, tsc, ESLint and audit gate |
@@ -147,7 +151,7 @@ Follow [OFFLINE_SETUP_WINDOWS.md](OFFLINE_SETUP_WINDOWS.md) for the complete ord
 - **Historical RC2 CI:** two supplied JSON records, 17 successful server-independent gates each; live MySQL integration excluded.
 - **Target Windows laptop:** SETUP-07 listeners; SETUP-08 healthy MySQL 8.4.11; SS-11 all listed local acceptance gates PASS; four-role captures and request-6 persistence.
 - **11 October isolated source review:** 151 Python tests including MySQL integration, 10 frontend tests, type/lint/tooling/build and unchanged audit policy passed.
-- **Remaining warning:** Starlette/httpx deprecation warning. Runtime npm findings are zero; the exact reviewed development-only `braces` advisory affects five tooling packages and remains gated. No new advisory is accepted.
+- **Current security maintenance:** [26 October review](docs/SECURITY_REMEDIATION_2026-10-26.md); both Python locks and full/runtime npm audits have zero known findings. The existing Starlette/httpx deprecation warning remains. Historical audit exceptions describe their dated snapshots, not the current finding count.
 - **Boundary:** the missing private installed-folder ZIP prevents full byte reconciliation of all laptop files. This is not final institutional acceptance or a general security certification.
 
 ## Academic project and team
@@ -159,10 +163,6 @@ Follow [OFFLINE_SETUP_WINDOWS.md](OFFLINE_SETUP_WINDOWS.md) for the complete ord
 
 Guide: **Dr. Rupali Chopade** · Head of School: **Dr. Prachi Joshi**. Academic context is attribution, not institutional endorsement. Repository ownership/collaboration details remain in [AUTHORS.md](AUTHORS.md) and [CONTRIBUTORS.md](CONTRIBUTORS.md).
 
-## Roadmap
+## Future extension ideas
 
-1. Complete the guide-reviewed report, institutional signatures and authentic plagiarism report.
-2. Rehearse the short role/SQL/persistence demonstration.
-3. Execute optional tagged catalogue/stock additions only after live precheck, fresh backup and separate screenshot approvals.
-4. Evaluate a versioned physical 3NF migration, historical valuation and persistent authentication/audit storage.
-5. Consider procurement, serial assets and deployment only after a separately scoped design review.
+The academic demonstration is complete. Any future development is a separate scope: a versioned physical 3NF migration, historical valuation, persistent authentication/audit storage, procurement, serial assets or deployment. Review current dependencies and repeat validation before reusing the source.
